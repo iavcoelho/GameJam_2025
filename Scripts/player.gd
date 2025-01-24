@@ -27,7 +27,9 @@ func _ready() -> void:
 	
 
 func _input(event):
-	if event.is_action_pressed("shoot") and can_fire:
+	if event is not InputEvent:
+		return
+	if Input.is_action_just_pressed("shoot") and can_fire:
 		can_fire = false
 		var bullet_instance: RigidBody2D = Bullet.instantiate()
 		self.shoot_parent.add_child(bullet_instance)
