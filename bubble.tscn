@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://sx3n8a0ufkik"]
+[gd_scene load_steps=4 format=3 uid="uid://byq68be578n5v"]
 
-[ext_resource type="Texture2D" uid="uid://bo03fgwdwudu1" path="res://blank.png" id="1_32hio"]
 [ext_resource type="Script" path="res://bubble.gd" id="1_f2k38"]
+[ext_resource type="Texture2D" uid="uid://c7njn24ttrsfr" path="res://bubble.webp" id="1_y2bsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2a3n"]
 size = Vector2(32, 32)
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 2
 mass = 0.001
 gravity_scale = 0.05
 contact_monitor = true
@@ -14,9 +15,12 @@ max_contacts_reported = 1
 script = ExtResource("1_f2k38")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_32hio")
+position = Vector2(-2.02656e-06, 4.70877e-06)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("1_y2bsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_x2a3n")
 
 [node name="Timer" type="Timer" parent="."]

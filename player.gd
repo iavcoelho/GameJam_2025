@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var Bullet = preload("res://bubble.tscn")
 
 var shoot_parent: Node
-
+var direction_inherit:float = 1
 var can_fire: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
@@ -26,8 +26,14 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("shoot") and can_fire:
 		can_fire = false
-		var bullet_instance = Bullet.instantiate()
+		var bullet_instance: RigidBody2D = Bullet.instantiate()
 		self.shoot_parent.add_child(bullet_instance)
+		bullet_instance.global_position.y = position.y
+		bullet_instance.global_position.x = position.x + direction_inherit * 3
+		if direction_inherit:
+			bullet_instance.linear_velocity.x = direction_inherit * speed
+		else:
+			bullet_instance.linear_velocity.x = move_toward(bullet_instance.linear_velocity.x, 0, speed)
 
 
 func _process(delta: float) -> void:
@@ -69,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * speed
 		_animated_sprite.flip_h = direction < 0
+		direction_inherit = direction
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
