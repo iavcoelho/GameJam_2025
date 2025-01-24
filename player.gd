@@ -15,6 +15,8 @@ var can_fire: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 func _ready() -> void:
 	self.shoot_parent = get_parent()
 	if self.shoot_parent == null:
@@ -31,6 +33,9 @@ func _input(event):
 func _process(delta: float) -> void:
 	if position.y > kill_plane:
 		get_tree().reload_current_scene()
+	
+	if velocity.length() < 0.1:
+		_animated_sprite.play("idle")
 
 
 func _physics_process(delta: float) -> void:
@@ -63,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * speed
+		_animated_sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
