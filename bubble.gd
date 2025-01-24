@@ -1,8 +1,9 @@
 extends RigidBody2D
 
+class_name Bubble
+
 func pop() -> void:
-	pass
-	#self.queue_free()
+	self.queue_free()
 
 func _on_timer_timeout() -> void:
 	pop()

@@ -7,10 +7,13 @@ extends CharacterBody2D
 @export var short_jump_time: float = 0.1
 @export var max_jump_time: float = 0.2
 
+@export var shoot_speed: float = 100
+@export var shoot_offset: float = 64
+
 @export var Bullet = preload("res://bubble.tscn")
 
 var shoot_parent: Node
-var direction_inherit:float = 1
+var direction_inherit: float = 1
 var can_fire: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
@@ -28,12 +31,9 @@ func _input(event):
 		can_fire = false
 		var bullet_instance: RigidBody2D = Bullet.instantiate()
 		self.shoot_parent.add_child(bullet_instance)
+		bullet_instance.global_position.x = position.x + direction_inherit * shoot_offset
 		bullet_instance.global_position.y = position.y
-		bullet_instance.global_position.x = position.x + direction_inherit * 3
-		if direction_inherit:
-			bullet_instance.linear_velocity.x = direction_inherit * speed
-		else:
-			bullet_instance.linear_velocity.x = move_toward(bullet_instance.linear_velocity.x, 0, speed)
+		bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
 
 
 func _process(delta: float) -> void:
@@ -75,8 +75,16 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * speed
 		_animated_sprite.flip_h = direction < 0
-		direction_inherit = direction
+		direction_inherit = 1 if direction >= 0.0 else -1
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+	
+	for index in get_slide_collision_count():
+		var collision = get_slide_collision(index)
+		var body = collision.get_collider()
+		
+		if body is Bubble:
+			velocity.y = jump_velocity
+			jump_held = true
