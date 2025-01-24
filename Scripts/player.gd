@@ -15,6 +15,8 @@ extends CharacterBody2D
 var shoot_parent: Node
 var direction_inherit: float = 1
 var can_fire: bool = false
+
+var is_jumping: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
 
@@ -53,15 +55,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
-		can_fire = true
+		self.can_fire = true
+		self.is_jumping = false
 
 	# Handle jump.
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = jump_velocity
+			self.is_jumping = true
 			self.jump_held = true
 			self.jump_time = 0.0
-	else:
+	elif self.is_jumping:
 		self.jump_time += delta
 		
 		if Input.is_action_just_released("jump"):
@@ -89,6 +93,6 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
 		
-		if body is Bubble and collision.get_angle() < PI/4:
+		if body is Bubble and collision.get_angle() < PI/6:
 			velocity.y = jump_velocity
-			jump_held = true
+			self.is_jumping = false
