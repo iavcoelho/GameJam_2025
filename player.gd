@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 @export var speed: float = 300
 @export var jump_velocity: float = -400
+@export var kill_plane: float = 50
+
+func _process(delta: float) -> void:
+	if position.y > kill_plane:
+		get_tree().reload_current_scene()
 
 
 func _physics_process(delta: float) -> void:
