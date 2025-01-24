@@ -4,10 +4,16 @@ extends CharacterBody2D
 @export var jump_velocity: float = -400
 @export var kill_plane: float = 50
 
+@export var short_jump_time: float = 0.1
+@export var max_jump_time: float = 0.2
+
 @export var Bullet = preload("res://bubble.tscn")
 
 var shoot_parent: Node
+
 var can_fire: bool = false
+var jump_held: bool = false
+var jump_time: float = 0.0
 
 func _ready() -> void:
 	self.shoot_parent = get_parent()
@@ -35,8 +41,22 @@ func _physics_process(delta: float) -> void:
 		can_fire = true
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_velocity
+			self.jump_held = true
+			self.jump_time = 0.0
+	else:
+		self.jump_time += delta
+		
+		if Input.is_action_just_released("jump"):
+			jump_held = false
+		
+		if jump_held and self.jump_time > short_jump_time and self.jump_time < max_jump_time:
+			velocity.y = jump_velocity
+		
+		if not jump_held and self.jump_time > short_jump_time:
+			velocity.y = max(velocity.y, 0.0)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
