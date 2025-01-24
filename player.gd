@@ -42,6 +42,8 @@ func _process(delta: float) -> void:
 	
 	if velocity.length() < 0.1:
 		_animated_sprite.play("idle")
+	else:
+		_animated_sprite.play("running")
 
 
 func _physics_process(delta: float) -> void:

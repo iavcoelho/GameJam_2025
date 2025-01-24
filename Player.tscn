@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=16 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://d2kxif1pncxa1" path="res://Character_GGJ.png" id="2_n5urc"]
+[ext_resource type="Texture2D" uid="uid://b5wk6y48yxrxq" path="res://Character_Running.png" id="3_cm5c4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
-size = Vector2(32, 64)
+size = Vector2(30, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46njq"]
 atlas = ExtResource("2_n5urc")
@@ -30,10 +31,26 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("2_n5urc")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fn1y"]
+atlas = ExtResource("3_cm5c4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn7vv"]
+atlas = ExtResource("3_cm5c4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4r1e"]
+atlas = ExtResource("3_cm5c4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oeah"]
+atlas = ExtResource("3_cm5c4")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_obvvr"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_46njq")
 }, {
 "duration": 1.0,
@@ -54,6 +71,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fn1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn7vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4r1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oeah")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -66,4 +100,4 @@ shape = SubResource("RectangleShape2D_15m67")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_obvvr")
 animation = &"idle"
-frame_progress = 0.686218
+frame_progress = 0.754732
