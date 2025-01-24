@@ -85,6 +85,6 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
 		
-		if body is Bubble:
+		if body is Bubble and collision.get_angle() < PI/4:
 			velocity.y = jump_velocity
 			jump_held = true
