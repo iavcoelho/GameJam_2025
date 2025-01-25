@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfjh87hrifs1p"]
+[gd_scene load_steps=8 format=3 uid="uid://dpdm08oeh2n2v"]
 
-[ext_resource type="Texture2D" uid="uid://cdot7nna4wvhu" path="res://Sprites/Sign.png" id="1_8g6m8"]
+[ext_resource type="Texture2D" uid="uid://bh0fx5ciymkkt" path="res://Sprites/Sign.png" id="1_8g6m8"]
 [ext_resource type="Script" path="res://Scripts/sign.gd" id="2_trq50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi21h"]
@@ -52,7 +52,7 @@ debug_color = Color(0.72529, 0.46985, 0.220965, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_1csat")
-animation = &"Idle"
+animation = &"Arrow"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

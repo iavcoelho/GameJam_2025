@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var speed: float = 300
 @export var jump_velocity: float = -400
 @export var kill_plane: float = 500
