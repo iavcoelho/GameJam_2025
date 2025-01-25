@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 300
 @export var jump_velocity: float = -400
-@export var kill_plane: float = 50
+@export var kill_plane: float = 500
 
 @export var short_jump_time: float = 0.1
 @export var max_jump_time: float = 0.2
@@ -33,11 +33,11 @@ func _input(event):
 		return
 	if Input.is_action_just_pressed("shoot") and can_fire:
 		can_fire = false
-		var bullet_instance: RigidBody2D = Bullet.instantiate()
+		var bullet_instance: Bubble = Bullet.instantiate()
 		self.shoot_parent.add_child(bullet_instance)
 		bullet_instance.global_position.x = position.x + direction_inherit * shoot_offset
 		bullet_instance.global_position.y = position.y
-		bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
+		# bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
 
 
 func _process(delta: float) -> void:
@@ -93,6 +93,9 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
 		
-		if body is Bubble and collision.get_angle() < PI/2:
-			velocity.y = jump_velocity
-			self.is_jumping = false
+		if body is Bubble:
+			body.pop()
+			
+			if collision.get_angle() < PI/2:
+				velocity.y = jump_velocity
+				self.is_jumping = false
