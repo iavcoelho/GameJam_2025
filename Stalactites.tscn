@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccav6npj8w53q"]
+
+[ext_resource type="Texture2D" uid="uid://cupc47m470mq6" path="res://Sprites/stalatites.png" id="1_jwiu8"]
+[ext_resource type="Script" path="res://Scripts/stalactites.gd" id="2_t1ka2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2c55"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7era"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfepb"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx17r"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkaoo"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32d1o"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1du0m"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8fkk"]
+atlas = ExtResource("1_jwiu8")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfb8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2c55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7era")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfepb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx17r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkaoo")
+}, {
+"duration": 0.05,
+"texture": SubResource("AtlasTexture_32d1o")
+}, {
+"duration": 0.05,
+"texture": SubResource("AtlasTexture_1du0m")
+}, {
+"duration": 0.05,
+"texture": SubResource("AtlasTexture_j8fkk")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 0.2
+}]
+
+[node name="Stalactites" type="Node2D"]
+script = ExtResource("2_t1ka2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rfb8b")
+animation = &"Default"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.141
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
