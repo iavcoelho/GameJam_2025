@@ -53,17 +53,24 @@ func shoot() -> void:
 	bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
 
 
-func _input(event):
-	if event is not InputEvent:
+func _input(event: InputEvent):
+	if event.is_action_pressed("reset"):
+		die()
+		return
+		
+	if self.dying:
 		return
 
-	if Input.is_action_just_pressed("shoot") and self.can_fire and not self.dying:
+	# Needs to go through Input because triggers generate multiple events
+	if Input.is_action_just_pressed("shoot") and self.can_fire:
 		self.can_fire = false
 		self.animation_state = AnimationStates.WIND_UP
+		return
 
 func die():
 	self.dying = true
 	self.animation_state = AnimationStates.DYING
+	self.velocity.x = 0.0
 
 func finish_death():
 	get_tree().reload_current_scene()
@@ -118,48 +125,49 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	else:
+	elif not self.dying:
 		self.is_jumping = false
 		
 		if self.animation_state != AnimationStates.WIND_UP:
 			self.can_fire = true
 		
-		if not self.prev_on_floor and not self.dying:
+		if not self.prev_on_floor:
 			self.animation_state = AnimationStates.LANDING
-	
-	self.prev_on_floor = is_on_floor()
-	
-	if Input.is_action_just_pressed("reset"):
-		die()
-		return
 
-	# Handle jump.
-	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
-			start_jump()
-	elif self.is_jumping:
-		self.jump_time += delta
-		
-		if Input.is_action_just_released("jump"):
-			jump_held = false
-		
-		if jump_held and self.jump_time > short_jump_time and self.jump_time < max_jump_time:
-			velocity.y = jump_velocity
-		
-		if not jump_held and self.jump_time > short_jump_time:
-			velocity.y = max(velocity.y, 0.0)
+	if not self.dying:
+		self.prev_on_floor = is_on_floor()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * speed
-		_animated_sprite.flip_h = direction < 0
-		direction_inherit = 1 if direction >= 0.0 else -1
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		# Handle jump.
+		if is_on_floor():
+			if Input.is_action_just_pressed("jump"):
+				start_jump()
+		elif self.is_jumping:
+			self.jump_time += delta
+			
+			if Input.is_action_just_released("jump"):
+				jump_held = false
+			
+			if jump_held and self.jump_time > short_jump_time and self.jump_time < max_jump_time:
+				velocity.y = jump_velocity
+			
+			if not jump_held and self.jump_time > short_jump_time:
+				velocity.y = max(velocity.y, 0.0)
+
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * speed
+			_animated_sprite.flip_h = direction < 0
+			direction_inherit = 1 if direction >= 0.0 else -1
+		else:
+			velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+	
+	if self.dying:
+		return
+	
 	for index in get_slide_collision_count():
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
