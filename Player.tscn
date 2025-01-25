@@ -99,5 +99,4 @@ shape = SubResource("RectangleShape2D_15m67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_obvvr")
-animation = &"idle"
-frame_progress = 0.113096
+animation = &"running"
