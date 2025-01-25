@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://devyol8jofdxj"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
+[ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
+[ext_resource type="Texture2D" uid="uid://dmv74kdpkvs20" path="res://Sprites/background.png" id="2_4lxme"]
+[ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6n0n1")
+start_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Play")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4lxme")
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Options")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Quit")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play" to="." method="play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="options_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="quit_pressed"]
