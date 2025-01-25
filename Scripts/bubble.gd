@@ -4,9 +4,10 @@ class_name Bubble
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _timer = $Timer
+@onready var _audio_player = $AudioStreamPlayer2D
 
 var dying: bool = false
-var is_in_water:bool = false
+var is_in_water: bool = false
 
 func _ready() -> void:
 	_animated_sprite.connect("animation_finished", func(): _animated_sprite.play("idle"))
@@ -23,6 +24,7 @@ func pop() -> void:
 	self.collision_layer = 2
 	self.collision_mask = 2
 	_animated_sprite.play("pop")
+	_audio_player.play()
 
 func stop_lifetime() -> void:
 	_timer.paused = true
@@ -35,6 +37,7 @@ func _on_timer_timeout() -> void:
 
 func collision(body_rid: RID, body: Node):
 	is_in_water = false
+
 	if body is TileMapLayer:
 		var tile_coords = body.get_coords_for_body_rid(body_rid)
 		var tile = body.get_cell_tile_data(tile_coords)
@@ -46,6 +49,7 @@ func collision(body_rid: RID, body: Node):
 			_timer.stop()
 			
 			return
+
 	pop()
 
 func _on_body_shape_entered(body_rid: RID, body: Node, _body_shape_index: int, _local_shape_index: int) -> void:

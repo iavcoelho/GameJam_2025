@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://sx3n8a0ufkik"]
+[gd_scene load_steps=14 format=3 uid="uid://sx3n8a0ufkik"]
 
 [ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_f2k38"]
 [ext_resource type="Texture2D" uid="uid://dr21pge5fcb3" path="res://Sprites/Bubble.png" id="2_sxkex"]
 [ext_resource type="Texture2D" uid="uid://bbrhtarvlk05i" path="res://Sprites/Bubble_Popping.png" id="3_65uk0"]
 [ext_resource type="Texture2D" uid="uid://cb6bdnhabt5l3" path="res://Sprites/Bubble_Shoot.png" id="4_xf3bd"]
+[ext_resource type="AudioStream" uid="uid://oy3hf46o5nmr" path="res://Audio/bubble_pop.ogg" id="5_8kg1k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utg43"]
 radius = 8.0
@@ -97,6 +98,9 @@ shape = SubResource("CircleShape2D_8tfih")
 sprite_frames = SubResource("SpriteFrames_if133")
 animation = &"shoot"
 frame_progress = 0.580547
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8kg1k")
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

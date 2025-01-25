@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_7511w"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_ilsl7"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
