@@ -7,6 +7,10 @@ class_name Bubble
 var dying: bool = false
 var is_in_water:bool = false
 
+func _ready() -> void:
+	_animated_sprite.connect("animation_finished", func(): _animated_sprite.play("idle"))
+	_animated_sprite.play("shoot")
+
 func pop() -> void:
 	if dying:
 		return
