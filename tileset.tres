@@ -1,6 +1,16 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cagrtvvwsuc5j"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cagrtvvwsuc5j"]
 
+[ext_resource type="Texture2D" uid="uid://duiwuriwqtrnj" path="res://Sprites/tile.png" id="1_lyq7e"]
 [ext_resource type="Texture2D" uid="uid://bo03fgwdwudu1" path="res://Sprites/blank.png" id="1_xbvdk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hndjr"]
+texture = ExtResource("1_lyq7e")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0/custom_data_0 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8tv0"]
 texture = ExtResource("1_xbvdk")
@@ -12,4 +22,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
+custom_data_layer_0/name = "die"
+custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_p8tv0")
+sources/0 = SubResource("TileSetAtlasSource_hndjr")

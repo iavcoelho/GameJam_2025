@@ -39,15 +39,19 @@ func _input(event):
 		bullet_instance.global_position.y = position.y
 		bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
 
+func die():
+	get_tree().reload_current_scene()
 
 func _process(delta: float) -> void:
 	if position.y > kill_plane:
-		get_tree().reload_current_scene()
+		die()
 	
 	if velocity.length() < 0.1:
 		_animated_sprite.play("idle")
 	else:
 		_animated_sprite.play("running")
+		
+
 
 
 func _physics_process(delta: float) -> void:
@@ -88,10 +92,20 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	
+	var dead = false
 	for index in get_slide_collision_count():
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
+		
+		if body is TileMapLayer:
+			var tile_rid = collision.get_collider_rid()
+			if tile_rid == null:
+				continue
+			var tile_coords = body.get_coords_for_body_rid(tile_rid)
+			var tile = body.get_cell_tile_data(tile_coords)
+			if tile.get_custom_data("die"):
+				dead = true
+			
 		
 		if body is Bubble:
 			body.pop()
@@ -99,3 +113,5 @@ func _physics_process(delta: float) -> void:
 			if collision.get_angle() < PI/2:
 				velocity.y = jump_velocity
 				self.is_jumping = false
+	if dead:
+		die()
