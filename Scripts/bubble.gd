@@ -34,20 +34,20 @@ func collision(body_rid: RID, body: Node):
 			return
 	pop()
 
-func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+func _on_body_shape_entered(body_rid: RID, body: Node, _body_shape_index: int, _local_shape_index: int) -> void:
 	collision(body_rid, body)
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	collision(body_rid, body)
 
 
-func _on_body_exited(body: Node) -> void:
-	is_in_water = false
-
-func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_body_exited(_body: Node) -> void:
 	is_in_water = false
 	
-func _process(delta: float) -> void:
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	is_in_water = false	
+
+func _process(_delta: float) -> void:
 	if is_in_water:
 		$Timer.paused = true
 		self.linear_velocity.y = -25
