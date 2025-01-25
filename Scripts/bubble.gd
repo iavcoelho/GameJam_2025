@@ -13,7 +13,7 @@ func pop() -> void:
 	dying = true
 	
 	_animated_sprite.connect("animation_finished", self.queue_free)
-	self.freeze = true
+	self.set_deferred("freeze", true)
 	self.collision_layer = 2
 	self.collision_mask = 2
 	_animated_sprite.play("pop")
