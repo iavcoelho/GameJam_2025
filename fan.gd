@@ -11,6 +11,10 @@ var bubbles: Array[Bubble] = []
 
 @onready var area_half_size_x = $CollisionShape2D.shape.get_rect().size.x / 2
 @onready var area_half_size_y = $CollisionShape2D.shape.get_rect().size.y / 2
+@onready var _animated_sprite = $AnimatedSprite2D
+
+func _ready() -> void:
+	_animated_sprite.play("spinning2")
 
 func _physics_process(delta: float) -> void:
 	for bubble_idx in range(bubbles.size() - 1, -1, -1):
