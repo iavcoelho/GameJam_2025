@@ -5,6 +5,7 @@ class_name Bubble
 @onready var _animated_sprite = $AnimatedSprite2D
 
 var dying: bool = false
+var is_in_water:bool = false
 
 func pop() -> void:
 	if dying:
@@ -21,9 +22,8 @@ func pop() -> void:
 func _on_timer_timeout() -> void:
 	pop()
 
-	
-var is_in_water:bool = false
 func collision(body_rid: RID, body: Node):
+	is_in_water = false
 	if body is TileMapLayer:
 		var tile_coords = body.get_coords_for_body_rid(body_rid)
 		var tile = body.get_cell_tile_data(tile_coords)
@@ -43,13 +43,15 @@ func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, _body_shape_ind
 
 func _on_body_exited(_body: Node) -> void:
 	is_in_water = false
+	$Timer.start()
 	
 func _on_area_2d_body_exited(_body: Node2D) -> void:
-	is_in_water = false	
+	is_in_water = false
+	$Timer.start()
 
 func _process(_delta: float) -> void:
 	if is_in_water:
 		$Timer.paused = true
 		self.linear_velocity.y = -25
 	else:
-		$Timer.start()
+		$Timer.paused = false
