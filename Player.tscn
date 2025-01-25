@@ -172,6 +172,7 @@ script = ExtResource("1_ja7ur")
 shape = SubResource("RectangleShape2D_15m67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_obvvr")
 animation = &"landing"
 

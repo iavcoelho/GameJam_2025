@@ -21,5 +21,35 @@ func pop() -> void:
 func _on_timer_timeout() -> void:
 	pop()
 
-func _on_body_entered(body: Node) -> void:
+	
+var is_in_water:bool = false
+func collision(body_rid: RID, body: Node):
+	if body is TileMapLayer:
+		var tile_coords = body.get_coords_for_body_rid(body_rid)
+		var tile = body.get_cell_tile_data(tile_coords)
+		if tile.get_custom_data("save_bubble"):
+			self.linear_velocity.x *= 0.8
+			self.linear_velocity.y = -15
+			is_in_water = true
+			return
 	pop()
+
+func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	collision(body_rid, body)
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	collision(body_rid, body)
+
+
+func _on_body_exited(body: Node) -> void:
+	is_in_water = false
+
+func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	is_in_water = false
+	
+func _process(delta: float) -> void:
+	if is_in_water:
+		$Timer.paused = true
+		self.linear_velocity.y = -25
+	else:
+		$Timer.start()
