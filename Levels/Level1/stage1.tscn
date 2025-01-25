@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=4 uid="uid://hr5x2m2e3qmt"]
+
+[ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_da40d"]
+[ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_rtse5"]
+[ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="3_j2822"]
+[ext_resource type="PackedScene" path="res://LevelEnd.tscn" id="4_14s0s"]
+[ext_resource type="PackedScene" uid="uid://bl838v1s77g7r" path="res://Levels/Level1/stage2.tscn" id="5_yukc1"]
+
+[node name="Level1" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [221.0, 447.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(2, 0)
+tile_map_data = PackedByteArray("AADm/wkAAAAAAAAAAADn/wkAAAAAAAAAAADo/wkAAAAAAAAAAADp/wkAAAAAAAAAAADq/wkAAAAAAAAAAADr/wkAAAAAAAAAAADs/wkAAAAAAAAAAADt/wkAAAAAAAAAAADu/wkAAAAAAAAAAADv/wkAAAAAAAAAAADw/wkAAAAAAAAAAADx/wkAAAAAAAAAAADy/wkAAAAAAAAAAADz/wkAAAAAAAAAAAD0/wkAAAAAAAAAAAD1/wkAAAAAAAAAAAD2/wkAAAAAAAAAAAD3/wkAAAAAAAAAAAD4/wkAAAAAAAAAAAD5/wkAAAAAAAAAAAD6/wkAAAAAAAAAAAD7/wkAAAAAAAAAAAD8/wkAAAAAAAAAAAD9/wkAAAAAAAAAAAD+/wkAAAAAAAAAAAD//wkAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAATAAYAAAAAAAAAAAASAAYAAAAAAAAAAAARAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("1_da40d")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rtse5")]
+position = Vector2(-761, 177)
+
+[node name="Sign" parent="." instance=ExtResource("3_j2822")]
+position = Vector2(-612, 262)
+
+[node name="LevelEnd" parent="." instance=ExtResource("4_14s0s")]
+position = Vector2(793, -144)
+scale = Vector2(-4.06321, 33.7545)
+next_scene = ExtResource("5_yukc1")
