@@ -99,6 +99,9 @@ func _physics_process(delta: float) -> void:
 			self.animation_state = AnimationStates.LANDING
 	
 	self.prev_on_floor = is_on_floor()
+	
+	if Input.is_action_just_pressed("reset"):
+		die()
 
 	# Handle jump.
 	if is_on_floor():
