@@ -53,7 +53,7 @@ func _input(event):
 func die():
 	get_tree().reload_current_scene()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if position.y > kill_plane:
 		die()
 		
@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reset"):
 		die()
+		return
 
 	# Handle jump.
 	if is_on_floor():
@@ -130,7 +131,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
-	var dead = false
 	for index in get_slide_collision_count():
 		var collision = get_slide_collision(index)
 		var body = collision.get_collider()
@@ -142,7 +142,8 @@ func _physics_process(delta: float) -> void:
 			var tile_coords = body.get_coords_for_body_rid(tile_rid)
 			var tile = body.get_cell_tile_data(tile_coords)
 			if tile.get_custom_data("die"):
-				dead = true
+				die()
+				return
 			
 		
 		if body is Bubble:
@@ -151,5 +152,3 @@ func _physics_process(delta: float) -> void:
 			if collision.get_angle() < PI/2:
 				velocity.y = jump_velocity
 				self.is_jumping = false
-	if dead:
-		die()
