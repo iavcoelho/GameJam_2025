@@ -65,12 +65,14 @@ func _input(event: InputEvent):
 	if Input.is_action_just_pressed("shoot") and self.can_fire:
 		self.can_fire = false
 		self.animation_state = AnimationStates.WIND_UP
+		_animated_sprite.play("wind_up")
 		return
 
 func die():
 	self.dying = true
 	self.animation_state = AnimationStates.DYING
 	self.velocity.x = 0.0
+	_animated_sprite.play("die")
 
 func finish_death():
 	get_tree().reload_current_scene()
@@ -85,9 +87,9 @@ func _process(_delta: float) -> void:
 		AnimationStates.LANDING:
 			_animated_sprite.play("landing")
 		AnimationStates.WIND_UP:
-			_animated_sprite.play("wind_up")
+			pass
 		AnimationStates.ATTACKING:
-			_animated_sprite.play("attack")
+			pass
 		AnimationStates.NORMAL:
 			if not is_on_floor():
 				if velocity.y < 0.0:
@@ -99,7 +101,7 @@ func _process(_delta: float) -> void:
 			else:
 				_animated_sprite.play("idle")
 		AnimationStates.DYING:
-			_animated_sprite.play("die")
+			pass
 
 
 func start_jump() -> void:
@@ -115,6 +117,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if self.animation_state == AnimationStates.WIND_UP:
 		shoot()
 		self.animation_state = AnimationStates.ATTACKING
+		_animated_sprite.play("attack")
 	elif self.animation_state == AnimationStates.DYING:
 		finish_death()
 	else:
