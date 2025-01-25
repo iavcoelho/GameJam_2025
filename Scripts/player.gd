@@ -57,7 +57,7 @@ func _input(event):
 	if event is not InputEvent:
 		return
 
-	if Input.is_action_just_pressed("shoot") and self.can_fire and self.dying:
+	if Input.is_action_just_pressed("shoot") and self.can_fire and not self.dying:
 		self.can_fire = false
 		self.animation_state = AnimationStates.WIND_UP
 
