@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://qlvkdyc6c1v5"]
+
+[ext_resource type="Script" path="res://fan.gd" id="1_6jbd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hdxt"]
+size = Vector2(64, 256)
+
+[sub_resource type="Curve2D" id="Curve2D_2o30f"]
+
+[sub_resource type="Gradient" id="Gradient_g5mwi"]
+colors = PackedColorArray(1, 1, 1, 1, 0.77084, 0.770839, 0.770839, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rbrj2"]
+gradient = SubResource("Gradient_g5mwi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gfryp"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(32, 1, 1)
+gravity = Vector3(0, -98, 0)
+scale_min = 2.0
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_rbrj2")
+
+[node name="Fan" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_6jbd0")
+metadata/_edit_vertical_guides_ = [-32.0, 32.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6hdxt")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2o30f")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, 128)
+amount = 48
+process_material = SubResource("ParticleProcessMaterial_gfryp")
+lifetime = 2.4
+trail_lifetime = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
