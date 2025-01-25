@@ -20,6 +20,16 @@ var is_jumping: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
 
+var prev_on_floor: bool = true
+
+enum AnimationStates {
+  JUMPING,
+  LANDING,
+  NORMAL,
+}
+
+var animation_state: AnimationStates = AnimationStates.NORMAL
+
 @onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready() -> void:
@@ -31,6 +41,7 @@ func _ready() -> void:
 func _input(event):
 	if event is not InputEvent:
 		return
+
 	if Input.is_action_just_pressed("shoot") and can_fire:
 		can_fire = false
 		var bullet_instance: Bubble = Bullet.instantiate()
@@ -45,13 +56,35 @@ func die():
 func _process(delta: float) -> void:
 	if position.y > kill_plane:
 		die()
-	
-	if velocity.length() < 0.1:
-		_animated_sprite.play("idle")
-	else:
-		_animated_sprite.play("running")
 		
+	match self.animation_state:
+		AnimationStates.JUMPING:
+			_animated_sprite.play("jump")
+		AnimationStates.LANDING:
+			_animated_sprite.play("landing")
+		AnimationStates.NORMAL:
+			if not is_on_floor():
+				if velocity.y < 0.0:
+					_animated_sprite.play("up")
+				else:
+					_animated_sprite.play("down")
+			elif abs(velocity.x) > 0.0:
+				_animated_sprite.play("running")
+			else:
+				_animated_sprite.play("idle")
 
+
+func start_jump() -> void:
+	velocity.y = jump_velocity
+	self.is_jumping = true
+	self.jump_held = true
+	self.jump_time = 0.0
+
+	self.animation_state = AnimationStates.JUMPING
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	self.animation_state = AnimationStates.NORMAL
 
 
 func _physics_process(delta: float) -> void:
@@ -61,14 +94,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		self.can_fire = true
 		self.is_jumping = false
+		
+		if not self.prev_on_floor:
+			self.animation_state = AnimationStates.LANDING
+	
+	self.prev_on_floor = is_on_floor()
 
 	# Handle jump.
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
-			velocity.y = jump_velocity
-			self.is_jumping = true
-			self.jump_held = true
-			self.jump_time = 0.0
+			start_jump()
 	elif self.is_jumping:
 		self.jump_time += delta
 		
