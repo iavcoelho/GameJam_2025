@@ -25,6 +25,8 @@ var prev_on_floor: bool = true
 enum AnimationStates {
   JUMPING,
   LANDING,
+  WIND_UP,
+  ATTACKING,
   NORMAL,
 }
 
@@ -36,7 +38,15 @@ func _ready() -> void:
 	self.shoot_parent = get_parent()
 	if self.shoot_parent == null:
 		self.shoot_parent = self
-	
+
+
+func shoot() -> void:		
+	var bullet_instance: Bubble = Bullet.instantiate()
+	self.shoot_parent.add_child(bullet_instance)
+	bullet_instance.global_position.x = position.x + direction_inherit * shoot_offset
+	bullet_instance.global_position.y = position.y
+	bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
+
 
 func _input(event):
 	if event is not InputEvent:
@@ -44,11 +54,7 @@ func _input(event):
 
 	if Input.is_action_just_pressed("shoot") and can_fire:
 		can_fire = false
-		var bullet_instance: Bubble = Bullet.instantiate()
-		self.shoot_parent.add_child(bullet_instance)
-		bullet_instance.global_position.x = position.x + direction_inherit * shoot_offset
-		bullet_instance.global_position.y = position.y
-		bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
+		self.animation_state = AnimationStates.WIND_UP
 
 func die():
 	get_tree().reload_current_scene()
@@ -62,6 +68,10 @@ func _process(_delta: float) -> void:
 			_animated_sprite.play("jump")
 		AnimationStates.LANDING:
 			_animated_sprite.play("landing")
+		AnimationStates.WIND_UP:
+			_animated_sprite.play("wind_up")
+		AnimationStates.ATTACKING:
+			_animated_sprite.play("attack")
 		AnimationStates.NORMAL:
 			if not is_on_floor():
 				if velocity.y < 0.0:
@@ -84,7 +94,11 @@ func start_jump() -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	self.animation_state = AnimationStates.NORMAL
+	if self.animation_state == AnimationStates.WIND_UP:
+		shoot()
+		self.animation_state = AnimationStates.ATTACKING
+	else:
+		self.animation_state = AnimationStates.NORMAL
 
 
 func _physics_process(delta: float) -> void:
@@ -92,8 +106,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
-		self.can_fire = true
 		self.is_jumping = false
+		
+		if self.animation_state != AnimationStates.WIND_UP:
+			self.can_fire = true
 		
 		if not self.prev_on_floor:
 			self.animation_state = AnimationStates.LANDING

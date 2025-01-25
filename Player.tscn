@@ -1,12 +1,21 @@
-[gd_scene load_steps=24 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=32 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
 [ext_resource type="Texture2D" uid="uid://d2kxif1pncxa1" path="res://Sprites/Character_Idle.png" id="2_n5urc"]
+[ext_resource type="Texture2D" uid="uid://dudy3oy1gncim" path="res://Sprites/Character_attack.png" id="2_tprlv"]
 [ext_resource type="Texture2D" uid="uid://b5wk6y48yxrxq" path="res://Sprites/Character_Running.png" id="3_cm5c4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
 size = Vector2(30, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acjp8"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx1nh"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqbl1"]
 atlas = ExtResource("2_hbiek")
@@ -76,8 +85,39 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("2_hbiek")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkcee"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl71p"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukoud"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foxxg"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxtt4"]
+atlas = ExtResource("2_tprlv")
+region = Rect2(256, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_obvvr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acjp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx1nh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hqbl1")
@@ -161,6 +201,26 @@ animations = [{
 "loop": true,
 "name": &"up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkcee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl71p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukoud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foxxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxtt4")
+}],
+"loop": false,
+"name": &"wind_up",
+"speed": 30.0
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -174,6 +234,6 @@ shape = SubResource("RectangleShape2D_15m67")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_obvvr")
-animation = &"landing"
+animation = &"attack"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
