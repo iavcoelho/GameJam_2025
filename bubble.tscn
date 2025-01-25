@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://sx3n8a0ufkik"]
+[gd_scene load_steps=10 format=3 uid="uid://sx3n8a0ufkik"]
 
 [ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_f2k38"]
 [ext_resource type="Texture2D" uid="uid://dr21pge5fcb3" path="res://Sprites/Bubble.png" id="2_sxkex"]
+[ext_resource type="Texture2D" uid="uid://bbrhtarvlk05i" path="res://Sprites/Bubble_Popping.png" id="3_65uk0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utg43"]
 radius = 8.0
@@ -9,16 +10,49 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tfih"]
 radius = 9.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kuxm"]
+atlas = ExtResource("3_65uk0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4ytf"]
+atlas = ExtResource("3_65uk0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7is8"]
+atlas = ExtResource("3_65uk0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if133"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sxkex")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kuxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4ytf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7is8")
+}],
+"loop": false,
+"name": &"pop",
+"speed": 16.0
+}]
+
 [node name="RigidBody2D" type="RigidBody2D"]
 mass = 0.001
 gravity_scale = 0.05
 contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_f2k38")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.02656e-06, 4.70877e-06)
-texture = ExtResource("2_sxkex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
@@ -36,6 +70,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_8tfih")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_if133")
+animation = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
