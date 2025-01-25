@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bllc58gtwptlq"]
+[gd_scene load_steps=4 format=4 uid="uid://bllc58gtwptlq"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_x8iy7"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_05fy8"]
+[ext_resource type="PackedScene" uid="uid://bfjh87hrifs1p" path="res://Sign.tscn" id="3_oh46m"]
 
 [node name="Level1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -15,3 +16,6 @@ tile_set = ExtResource("1_x8iy7")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_05fy8")]
 position = Vector2(-761, 177)
+
+[node name="Sign" parent="." instance=ExtResource("3_oh46m")]
+position = Vector2(-612, 262)
