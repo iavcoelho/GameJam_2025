@@ -15,6 +15,13 @@ run/main_scene="res://test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1700
+window/size/viewport_height=960
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 move_left={
