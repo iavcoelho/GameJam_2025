@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=37 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
 [ext_resource type="Texture2D" uid="uid://d2kxif1pncxa1" path="res://Sprites/Character_Idle.png" id="2_n5urc"]
 [ext_resource type="Texture2D" uid="uid://dudy3oy1gncim" path="res://Sprites/Character_attack.png" id="2_tprlv"]
+[ext_resource type="Texture2D" uid="uid://ds1qbvnyfl2fn" path="res://Sprites/Character_die.png" id="3_8ti32"]
 [ext_resource type="Texture2D" uid="uid://b5wk6y48yxrxq" path="res://Sprites/Character_Running.png" id="3_cm5c4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
@@ -16,6 +17,22 @@ region = Rect2(320, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dx1nh"]
 atlas = ExtResource("2_tprlv")
 region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_112od"]
+atlas = ExtResource("3_8ti32")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43ymp"]
+atlas = ExtResource("3_8ti32")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x28r3"]
+atlas = ExtResource("3_8ti32")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yskri"]
+atlas = ExtResource("3_8ti32")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqbl1"]
 atlas = ExtResource("2_hbiek")
@@ -117,6 +134,23 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_112od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43ymp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x28r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yskri")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -234,6 +268,8 @@ shape = SubResource("RectangleShape2D_15m67")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_obvvr")
-animation = &"attack"
+animation = &"die"
+frame = 3
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

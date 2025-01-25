@@ -22,6 +22,8 @@ var is_jumping: bool = false
 var jump_held: bool = false
 var jump_time: float = 0.0
 
+var dying: bool = false
+
 var prev_on_floor: bool = true
 
 enum AnimationStates {
@@ -30,6 +32,7 @@ enum AnimationStates {
   WIND_UP,
   ATTACKING,
   NORMAL,
+  DYING
 }
 
 var animation_state: AnimationStates = AnimationStates.NORMAL
@@ -54,16 +57,20 @@ func _input(event):
 	if event is not InputEvent:
 		return
 
-	if Input.is_action_just_pressed("shoot") and can_fire:
-		can_fire = false
+	if Input.is_action_just_pressed("shoot") and self.can_fire and self.dying:
+		self.can_fire = false
 		self.animation_state = AnimationStates.WIND_UP
 
 func die():
+	self.dying = true
+	self.animation_state = AnimationStates.DYING
+
+func finish_death():
 	get_tree().reload_current_scene()
 
 func _process(_delta: float) -> void:
 	if position.y > kill_plane:
-		die()
+		finish_death()
 		
 	match self.animation_state:
 		AnimationStates.JUMPING:
@@ -84,6 +91,8 @@ func _process(_delta: float) -> void:
 				_animated_sprite.play("running")
 			else:
 				_animated_sprite.play("idle")
+		AnimationStates.DYING:
+			_animated_sprite.play("die")
 
 
 func start_jump() -> void:
@@ -99,6 +108,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if self.animation_state == AnimationStates.WIND_UP:
 		shoot()
 		self.animation_state = AnimationStates.ATTACKING
+	elif self.animation_state == AnimationStates.DYING:
+		finish_death()
 	else:
 		self.animation_state = AnimationStates.NORMAL
 
@@ -113,7 +124,7 @@ func _physics_process(delta: float) -> void:
 		if self.animation_state != AnimationStates.WIND_UP:
 			self.can_fire = true
 		
-		if not self.prev_on_floor:
+		if not self.prev_on_floor and not self.dying:
 			self.animation_state = AnimationStates.LANDING
 	
 	self.prev_on_floor = is_on_floor()
