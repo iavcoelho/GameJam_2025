@@ -37,7 +37,7 @@ func _input(event):
 		self.shoot_parent.add_child(bullet_instance)
 		bullet_instance.global_position.x = position.x + direction_inherit * shoot_offset
 		bullet_instance.global_position.y = position.y
-		# bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
+		bullet_instance.linear_velocity.x = direction_inherit * shoot_speed
 
 
 func _process(delta: float) -> void:
