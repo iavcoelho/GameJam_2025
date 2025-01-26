@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://devyol8jofdxj"]
+[gd_scene load_steps=13 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
@@ -25,6 +25,11 @@ scene = "res://Levels/Level1/stage1.tscn"
 script = ExtResource("6_sso12")
 name = "Level 2"
 scene = "res://Levels/Level2/stage1.tscn"
+
+[sub_resource type="Resource" id="Resource_bt85u"]
+script = ExtResource("6_sso12")
+name = "Level 3"
+scene = "res://Levels/Level3/stage1.tscn"
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "level_select_menu", "options_menu")]
 layout_mode = 3
@@ -187,7 +192,7 @@ theme_override_constants/separation = 26
 alignment = 1
 script = ExtResource("5_8p4u8")
 level_button = ExtResource("9_okk1c")
-levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6"), SubResource("Resource_675dw")])
+levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6"), SubResource("Resource_675dw"), SubResource("Resource_bt85u")])
 
 [node name="Back" type="Button" parent="MarginContainer/HBoxContainer/LevelSelect"]
 layout_mode = 2
