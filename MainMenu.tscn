@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://devyol8jofdxj"]
+[gd_scene load_steps=13 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="4_rlj63"]
+[ext_resource type="Script" path="res://Scripts/level_select.gd" id="5_8p4u8"]
+[ext_resource type="Script" path="res://Scripts/level.gd" id="6_sso12"]
+[ext_resource type="PackedScene" uid="uid://hr5x2m2e3qmt" path="res://Levels/Tutorial/stage1.tscn" id="7_nbag8"]
+[ext_resource type="PackedScene" uid="uid://rtwt4nyxibaa" path="res://Levels/Level1/stage1.tscn" id="8_xocie"]
+[ext_resource type="PackedScene" uid="uid://b0jb04p4cqso3" path="res://LevelSceneButton.tscn" id="9_okk1c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xc83h"]
 load_path = "res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "options_menu")]
+[sub_resource type="Resource" id="Resource_f6csp"]
+script = ExtResource("6_sso12")
+name = "Tutorial"
+scene = ExtResource("7_nbag8")
+
+[sub_resource type="Resource" id="Resource_jukg6"]
+script = ExtResource("6_sso12")
+name = "Level 1"
+scene = ExtResource("8_xocie")
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "level_select_menu", "options_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_6n0n1")
 start_button = NodePath("MarginContainer/HBoxContainer/MainMenu/Play")
 main_menu = NodePath("MarginContainer/HBoxContainer/MainMenu")
+level_select_menu = NodePath("MarginContainer/HBoxContainer/LevelSelect")
 options_menu = NodePath("MarginContainer/HBoxContainer/Options")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -54,15 +70,25 @@ alignment = 1
 
 [node name="Play" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Options")
+focus_neighbor_bottom = NodePath("../LevelSelect")
 theme = ExtResource("1_86nes")
 theme_override_fonts/font = ExtResource("2_o6n5n")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
+[node name="LevelSelect" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Options")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Level Select
+"
+
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LevelSelect")
 focus_neighbor_bottom = NodePath("../Quit")
 theme = ExtResource("1_86nes")
 theme_override_fonts/font = ExtResource("2_o6n5n")
@@ -150,8 +176,29 @@ theme_override_fonts/font = ExtResource("2_o6n5n")
 theme_override_font_sizes/font_size = 48
 text = "Back"
 
+[node name="LevelSelect" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+script = ExtResource("5_8p4u8")
+level_button = ExtResource("9_okk1c")
+levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6")])
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/LevelSelect"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../GridContainer/EffectsSlider")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Play" to="." method="play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/LevelSelect" to="." method="level_select_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Options" to="." method="options_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Quit" to="." method="quit_pressed"]
 [connection signal="visibility_changed" from="MarginContainer/HBoxContainer/Options" to="MarginContainer/HBoxContainer/Options" method="_on_visibility_changed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Options/Back" to="." method="_on_back_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/HBoxContainer/LevelSelect" to="MarginContainer/HBoxContainer/LevelSelect" method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LevelSelect/Back" to="." method="_on_back_pressed"]
