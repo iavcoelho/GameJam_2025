@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://devyol8jofdxj"]
+[gd_scene load_steps=15 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
@@ -36,6 +36,11 @@ script = ExtResource("6_sso12")
 name = "Level 4"
 scene = "res://Levels/Level4/stage1_0.tscn"
 
+[sub_resource type="Resource" id="Resource_i7jx4"]
+script = ExtResource("6_sso12")
+name = "Level 5"
+scene = "res://Levels/Level5/stage1.tscn"
+
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "level_select_menu", "options_menu")]
 layout_mode = 3
 anchors_preset = 15
@@ -43,6 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_86nes")
 script = ExtResource("1_6n0n1")
 start_button = NodePath("MarginContainer/HBoxContainer/MainMenu/Play")
 first_level = "res://Levels/Tutorial/stage1.tscn"
@@ -197,7 +203,7 @@ theme_override_constants/separation = 26
 alignment = 1
 script = ExtResource("5_8p4u8")
 level_button = ExtResource("9_okk1c")
-levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6"), SubResource("Resource_675dw"), SubResource("Resource_bt85u"), SubResource("Resource_jmttt")])
+levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6"), SubResource("Resource_675dw"), SubResource("Resource_bt85u"), SubResource("Resource_jmttt"), SubResource("Resource_i7jx4")])
 
 [node name="Back" type="Button" parent="MarginContainer/HBoxContainer/LevelSelect"]
 layout_mode = 2

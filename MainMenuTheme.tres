@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bs35oii8fql0e"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bs35oii8fql0e"]
 
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="1_ddowd"]
 [ext_resource type="Texture2D" uid="uid://chvk0e0rcpt3l" path="res://Sprites/Button.png" id="2_cfdt5"]
+[ext_resource type="Texture2D" uid="uid://b4opjj1v6i1hr" path="res://Sprites/Slider_Grabber.png" id="3_34rhg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e7d4"]
 content_margin_left = 4.0
@@ -20,13 +21,13 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.640703, 7.16186e-05, 0.534933, 1)
+bg_color = Color(1, 0.658824, 0.682353, 1)
 draw_center = false
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.717957, 0.223323, 0.493037, 1)
+border_color = Color(1, 0.658824, 0.682353, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -88,3 +89,9 @@ Button/styles/focus = SubResource("StyleBoxFlat_avcrm")
 Button/styles/hover = SubResource("StyleBoxTexture_n0q7b")
 Button/styles/normal = SubResource("StyleBoxTexture_bq4xt")
 Button/styles/pressed = SubResource("StyleBoxTexture_coijy")
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("3_34rhg")
+HSlider/icons/grabber_disabled = ExtResource("3_34rhg")
+HSlider/icons/grabber_highlight = ExtResource("3_34rhg")
+VSlider/styles/grabber_area = null

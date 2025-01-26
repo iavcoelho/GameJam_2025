@@ -28,7 +28,6 @@ next_scene = "res://Levels/Level5/stage3.tscn"
 color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="Background" parent="." instance=ExtResource("4_43aar")]
-visible = false
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_3te3f")]
 position = Vector2(777, 504)

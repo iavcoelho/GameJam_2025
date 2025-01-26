@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_ndg2s"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="4_ii218"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_rgla5"]
-[ext_resource type="PackedScene" uid="uid://cm5btw1ti1enx" path="res://Fan.tscn" id="6_i04r7"]
+[ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="6_i04r7"]
 [ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="7_gyq6e"]
 
 [node name="stage1" type="Node2D"]

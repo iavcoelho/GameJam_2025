@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_8x8yh"]
 [ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="6_2v0tq"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="7_yysag"]
-[ext_resource type="PackedScene" path="res://Portal.tscn" id="8_d7lw5"]
+[ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="8_d7lw5"]
 
 [node name="stage1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
