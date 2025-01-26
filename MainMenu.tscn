@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://devyol8jofdxj"]
+[gd_scene load_steps=6 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="4_rlj63"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xc83h"]
 load_path = "res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "options_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +16,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6n0n1")
-start_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Play")
+start_button = NodePath("MarginContainer/HBoxContainer/MainMenu/Play")
+main_menu = NodePath("MarginContainer/HBoxContainer/MainMenu")
+options_menu = NodePath("MarginContainer/HBoxContainer/Options")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -43,13 +46,13 @@ theme_override_constants/margin_bottom = 80
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MainMenu" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 26
 alignment = 1
 
-[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Options")
 theme = ExtResource("1_86nes")
@@ -57,7 +60,7 @@ theme_override_fonts/font = ExtResource("2_o6n5n")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
-[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Quit")
@@ -66,7 +69,7 @@ theme_override_fonts/font = ExtResource("2_o6n5n")
 theme_override_font_sizes/font_size = 48
 text = "Options"
 
-[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer/MainMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
 theme = ExtResource("1_86nes")
@@ -74,6 +77,81 @@ theme_override_fonts/font = ExtResource("2_o6n5n")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play" to="." method="play_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="options_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="quit_pressed"]
+[node name="Options" type="VBoxContainer" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("_master_volume_slider", "_bgm_volume_slider", "_effects_volume_slider")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 26
+alignment = 1
+script = ExtResource("4_rlj63")
+_master_volume_slider = NodePath("GridContainer/MasterSlider")
+_bgm_volume_slider = NodePath("GridContainer/BGMSlider")
+_effects_volume_slider = NodePath("GridContainer/EffectsSlider")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/Options"]
+layout_mode = 2
+theme_override_constants/h_separation = 26
+theme_override_constants/v_separation = 14
+columns = 2
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 26
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../BGMSlider")
+max_value = 1.0
+step = 0.05
+
+[node name="BGMLabel" type="Label" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 26
+text = "Background Music"
+horizontal_alignment = 1
+
+[node name="BGMSlider" type="HSlider" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MasterSlider")
+focus_neighbor_bottom = NodePath("../EffectsSlider")
+max_value = 1.0
+step = 0.05
+
+[node name="EffectsLabel" type="Label" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 26
+text = "Effects Volume"
+horizontal_alignment = 1
+
+[node name="EffectsSlider" type="HSlider" parent="MarginContainer/HBoxContainer/Options/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../BGMSlider")
+focus_neighbor_bottom = NodePath("../../Back")
+max_value = 1.0
+step = 0.05
+
+[node name="Back" type="Button" parent="MarginContainer/HBoxContainer/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../GridContainer/EffectsSlider")
+theme = ExtResource("1_86nes")
+theme_override_fonts/font = ExtResource("2_o6n5n")
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Play" to="." method="play_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Options" to="." method="options_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenu/Quit" to="." method="quit_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/HBoxContainer/Options" to="MarginContainer/HBoxContainer/Options" method="_on_visibility_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Options/Back" to="." method="_on_back_pressed"]
