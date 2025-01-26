@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
-[ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
+[ext_resource type="Theme" uid="uid://si5vqfpgsvuj" path="res://MainMenuTheme.tres" id="1_86nes"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="4_rlj63"]
 [ext_resource type="Script" path="res://Scripts/level_select.gd" id="5_8p4u8"]

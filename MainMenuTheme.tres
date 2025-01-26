@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bs35oii8fql0e"]
-=======
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://nfmhe6is8f16"]
->>>>>>> Stashed changes
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://si5vqfpgsvuj"]
 
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="1_ddowd"]
 [ext_resource type="Texture2D" uid="uid://chvk0e0rcpt3l" path="res://Sprites/Button.png" id="2_cfdt5"]
