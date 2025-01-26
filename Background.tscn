@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://pe74kw2e3kin"]
+
+[ext_resource type="Texture2D" uid="uid://bm3nj5jc42vdo" path="res://Sprites/background.png" id="1_8jegn"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -60.0
+offset_right = 1810.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_8jegn")
+expand_mode = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.466181, 0.466181, 0.466181, 1)
