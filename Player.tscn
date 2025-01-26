@@ -291,12 +291,11 @@ script = ExtResource("1_ja7ur")
 attack_sfx = Array[AudioStream]([ExtResource("2_ky847"), ExtResource("3_4j3hx"), ExtResource("4_wrnbd"), ExtResource("5_ntylr"), ExtResource("6_fcm1c")])
 
 [node name="ShadowCaster" type="PointLight2D" parent="."]
-range_layer_max = 1
+range_layer_min = -1
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_k7fem")
 
 [node name="LightCaster" type="PointLight2D" parent="."]
-range_layer_max = 1
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_xn1u4")
 
