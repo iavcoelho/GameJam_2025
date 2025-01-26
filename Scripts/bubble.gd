@@ -21,8 +21,7 @@ func pop() -> void:
 	
 	_animated_sprite.connect("animation_finished", self.queue_free)
 	self.set_deferred("freeze", true)
-	self.collision_layer = 2
-	self.collision_mask = 2
+	self.collision_layer = 8
 	_animated_sprite.play("pop")
 	_audio_player.play()
 

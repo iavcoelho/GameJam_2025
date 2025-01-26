@@ -257,7 +257,8 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = -1
-collision_layer = 3
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_ja7ur")
 attack_sfx = Array[AudioStream]([ExtResource("2_ky847"), ExtResource("3_4j3hx"), ExtResource("4_wrnbd"), ExtResource("5_ntylr"), ExtResource("6_fcm1c")])
 

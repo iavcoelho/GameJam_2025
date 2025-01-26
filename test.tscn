@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_ne8kd"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_crngi"]
-[ext_resource type="PackedScene" uid="uid://cm5btw1ti1enx" path="res://Fan.tscn" id="3_1jug6"]
+[ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="3_1jug6"]
 
 [node name="Node2D" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [322.0]
