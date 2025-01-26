@@ -23,6 +23,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/animation_columns = 1
 0:1/0 = 0
 1:1/0 = 0
+2:1/0 = 0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3lcsq"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
