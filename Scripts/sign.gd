@@ -14,7 +14,7 @@ var progress_sign_text = "'{input}' to keep reading"
 @onready var interact_label = $Interact
 var content_tween: Tween
 var interact_tween: Tween
-var using_gamepad = false
+var using_gamepad = true
 var first_interaction = true
 	
 func format_text(input: String):
@@ -23,7 +23,7 @@ func format_text(input: String):
 	return text.format({"input": input})
 
 func _ready() -> void:
-	sign_label.text = ""
+	print("ready")
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
