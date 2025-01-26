@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_ijtxb"]
 [ext_resource type="PackedScene" uid="uid://c3kbqya3rapes" path="res://Levels/Tutorial/stage4.tscn" id="4_bgomi"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_62ff1"]
-[ext_resource type="Texture2D" uid="uid://bm3nj5jc42vdo" path="res://Sprites/background.png" id="6_emigc"]
+[ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="6_7mve5"]
 
 [node name="stage3" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -34,15 +34,7 @@ The bubbles love water!!!", "They float on water
 so just be carefull."])
 content_actions = ["", ""]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -10
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_emigc")
-stretch_mode = 6
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="Background" parent="." instance=ExtResource("6_7mve5")]

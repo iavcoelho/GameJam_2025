@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_w3tr8"]
 [ext_resource type="PackedScene" uid="uid://clibds7nw6od6" path="res://Levels/Tutorial/stage3.tscn" id="4_fufer"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_jfxn4"]
-[ext_resource type="Texture2D" uid="uid://bm3nj5jc42vdo" path="res://Sprites/background.png" id="6_2r8cx"]
+[ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="6_25cfv"]
 
 [node name="stage2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -32,15 +32,7 @@ sign_content = Array[String](["Well done!", "U can throw bubbles using '{input}'
 Try Jumping on top of them"])
 content_actions = ["", "shoot", ""]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = -10
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_2r8cx")
-stretch_mode = 6
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="Background" parent="." instance=ExtResource("6_25cfv")]

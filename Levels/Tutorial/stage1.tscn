@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="3_j2822"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="4_14s0s"]
 [ext_resource type="PackedScene" uid="uid://bl838v1s77g7r" path="res://Levels/Tutorial/stage2.tscn" id="5_yukc1"]
-[ext_resource type="PackedScene" path="res://Background.tscn" id="6_h2o5v"]
+[ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="6_h2o5v"]
 
 [node name="stage1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
