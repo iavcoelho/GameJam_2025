@@ -1,7 +1,7 @@
 extends Control
 
 @export var start_button: Control = null
-@export var first_level: PackedScene = preload("res://Levels/Level1/stage1.tscn")
+@export var first_level: PackedScene = preload("res://Levels/Tutorial/stage1.tscn")
 
 func _ready():
 	start_button.grab_focus()
