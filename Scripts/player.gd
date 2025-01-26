@@ -28,6 +28,8 @@ var dying: bool = false
 
 var prev_on_floor: bool = true
 
+var _gravity_coeff: float = 1.0
+
 enum AnimationStates {
   JUMPING,
   LANDING,
@@ -43,6 +45,9 @@ var animation_state: AnimationStates = AnimationStates.NORMAL
 @onready var _attack_audio_player: AudioStreamPlayer2D = $AttackSfx
 @onready var _jump_audio_player: AudioStreamPlayer2D = $JumpSfx
 @onready var _landing_audio_player: AudioStreamPlayer2D = $LandingSfx
+@onready var _water_enter_audio_player: AudioStreamPlayer2D = $WaterEnterSfx
+
+@onready var _water_splash_particles: GPUParticles2D = $WaterSplashParticles
 
 func _ready() -> void:
 	self.shoot_parent = get_parent()
@@ -139,7 +144,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += self._gravity_coeff * get_gravity() * delta
 	elif not self.dying:
 		self.is_jumping = false
 		
@@ -197,11 +202,53 @@ func _physics_process(delta: float) -> void:
 			if tile.get_custom_data("die"):
 				die()
 				return
-			
-		
-		if body is Bubble:
+		elif body is Bubble:
 			body.pop()
 			
 			if collision.get_angle() < PI/2:
 				velocity.y = jump_velocity
 				self.is_jumping = false
+
+var _water_enters: int = 0
+
+@onready var _master_bus := AudioServer.get_bus_index("Master")
+
+func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body is TileMapLayer:
+		var tile_coords = body.get_coords_for_body_rid(body_rid)
+		var tile = body.get_cell_tile_data(tile_coords)
+		if tile.get_custom_data("save_bubble"):
+			if _water_enters == 0:
+				for i in AudioServer.get_bus_effect_count(_master_bus):
+					AudioServer.set_bus_effect_enabled(_master_bus, i, true)
+				
+				if velocity.y > 0:
+					var sound = min(velocity.y / 500, 1.0)
+					_water_enter_audio_player.volume_db = linear_to_db(ease(sound, 3.6) + 0.1)
+					_water_enter_audio_player.play()
+				
+				var tile_y = body.to_global(body.map_to_local(tile_coords)).y
+				tile_y -= body.tile_set.tile_size.y / 2
+				
+				var splash_coords = Vector2(global_position.x, tile_y)
+				_water_splash_particles.global_position = splash_coords
+				_water_splash_particles.emitting = true
+				
+				_gravity_coeff = 0.1
+				velocity.y = min(velocity.y, 200)
+				
+			_water_enters += 1
+
+
+func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if body is TileMapLayer:
+		var tile_coords = body.get_coords_for_body_rid(body_rid)
+		var tile = body.get_cell_tile_data(tile_coords)
+		if tile.get_custom_data("save_bubble"):
+			_water_enters -= 1
+			
+			if _water_enters == 0:
+				for i in AudioServer.get_bus_effect_count(_master_bus):
+					AudioServer.set_bus_effect_enabled(_master_bus, i, false)
+					
+				_gravity_coeff = 1.0

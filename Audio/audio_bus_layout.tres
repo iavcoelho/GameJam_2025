@@ -1,6 +1,23 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cs87bs73y335j"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cs87bs73y335j"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_w4qn8"]
+resource_name = "LowPassFilter"
+cutoff_hz = 1500.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_htpd5"]
+resource_name = "Reverb"
+room_size = 0.4
+damping = 0.15
+spread = 0.2
+hipass = 0.05
+dry = 0.2
+wet = 1.0
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_w4qn8")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_htpd5")
+bus/0/effect/1/enabled = false
 bus/1/name = &"BGM"
 bus/1/solo = false
 bus/1/mute = false

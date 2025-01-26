@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=52 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://b5cgqad52w5n0" path="res://Audio/bubble_spawn_5.wav" id="6_fcm1c"]
 [ext_resource type="AudioStream" uid="uid://j7gqve5nwuae" path="res://Audio/jumping.wav" id="12_674sy"]
 [ext_resource type="AudioStream" uid="uid://cqjsawxqm2x7c" path="res://Audio/landing.wav" id="13_fw5ex"]
+[ext_resource type="AudioStream" uid="uid://dcd1pswkb5sfj" path="res://Audio/jump_on_water.wav" id="14_3aaws"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vvphf"]
 light_mode = 1
@@ -282,6 +283,26 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="Curve" id="Curve_gt3n8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.426667, 0.934066), -0.478554, -0.478554, 0, 0, Vector2(1, 0), 0.647567, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y8673"]
+curve = SubResource("Curve_gt3n8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_djeng"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 1, 1)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -60.0
+initial_velocity_max = -50.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 6.0
+color = Color(0, 0.552941, 0.701961, 0.603922)
+alpha_curve = SubResource("CurveTexture_y8673")
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = -1
 material = SubResource("CanvasItemMaterial_vvphf")
@@ -311,15 +332,38 @@ animation = &"wind_up"
 position = Vector2(0, -32)
 
 [node name="AttackSfx" type="AudioStreamPlayer2D" parent="."]
-bus = &"BGM"
+bus = &"Effects"
 
 [node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_674sy")
-bus = &"BGM"
+bus = &"Effects"
 
 [node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_fw5ex")
 volume_db = 24.0
-bus = &"BGM"
+bus = &"Effects"
+
+[node name="WaterEnterSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_3aaws")
+bus = &"Effects"
+
+[node name="WaterSplashParticles" type="GPUParticles2D" parent="."]
+light_mask = 3
+position = Vector2(0, 32)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_djeng")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_15m67")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
