@@ -9,7 +9,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34vwc"]
 light_mode = 1
 
-[node name="stage1" type="Node2D"]
+[node name="stage2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -26,6 +26,7 @@ position = Vector2(-829, 275)
 [node name="LevelEnd" parent="." instance=ExtResource("3_1rh4e")]
 position = Vector2(901, 207)
 scale = Vector2(-4.06321, 11.5145)
+next_scene = "res://Levels/Level3/stage4.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)

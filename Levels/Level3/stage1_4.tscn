@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_67vap"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_qpeuh"]
 
-[node name="stage1" type="Node2D"]
+[node name="stage2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]

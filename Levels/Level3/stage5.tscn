@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_vwyge"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_le75m"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="6_y57ts"]
-[ext_resource type="PackedScene" path="res://Portal.tscn" id="7_h0ynv"]
+[ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="7_h0ynv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_043pi"]
 light_mode = 1
 
-[node name="stage1" type="Node2D"]
+[node name="stage2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -27,6 +27,7 @@ position = Vector2(-819, 175)
 [node name="LevelEnd" parent="." instance=ExtResource("3_vwyge")]
 position = Vector2(768, 465)
 scale = Vector2(-9.30321, 1.4745)
+next_scene = "res://Levels/Level3/stage1_5.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
