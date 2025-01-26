@@ -13,7 +13,8 @@ config_version=5
 config/name="ggj2025"
 run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [audio]
 
@@ -29,6 +30,7 @@ SignInputSingleton="*res://Scripts/sign_input_singleton.gd"
 
 window/size/viewport_width=1700
 window/size/viewport_height=960
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
