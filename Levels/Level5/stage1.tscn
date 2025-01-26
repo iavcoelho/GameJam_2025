@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_gr0xo"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_6xsvw"]
-[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_fnwdy"]
+[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://StageEnd.tscn" id="3_fnwdy"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="4_xtll6"]
 
 [node name="stage1" type="Node2D"]

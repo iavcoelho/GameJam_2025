@@ -306,12 +306,12 @@ scale_max = 6.0
 color = Color(0, 0.552941, 0.701961, 0.603922)
 alpha_curve = SubResource("CurveTexture_y8673")
 
-[sub_resource type="Gradient" id="Gradient_8qk4d"]
+[sub_resource type="Gradient" id="Gradient_lbs1k"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.160784, 0.160784, 0.160784, 0.529412)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ry18k"]
-gradient = SubResource("Gradient_8qk4d")
+gradient = SubResource("Gradient_lbs1k")
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = -1

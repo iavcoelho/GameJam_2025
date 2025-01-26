@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://r5ohqdhnfep7"]
+[gd_scene load_steps=7 format=3 uid="uid://bwem2tmw8ayq5"]
 
 [ext_resource type="Script" path="res://Scripts/level_end.gd" id="1_l2pam"]
+[ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_2qynl"]
+[ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="3_n4qym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je503"]
 
+[sub_resource type="Gradient" id="Gradient_8qk4d"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.160784, 0.160784, 0.160784, 0.529412)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cob83"]
+gradient = SubResource("Gradient_8qk4d")
+
 [node name="LevelEnd" type="Area2D"]
+process_mode = 3
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_l2pam")
@@ -12,4 +22,52 @@ script = ExtResource("1_l2pam")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_je503")
 
+[node name="Menu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_cob83")
+expand_mode = 1
+
+[node name="Controls" type="VBoxContainer" parent="Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -136.5
+offset_right = 147.5
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Label" type="Label" parent="Menu/Controls"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2qynl")
+theme_override_font_sizes/font_size = 32
+text = "Level finished"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="Menu/Controls"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Back")
+theme = ExtResource("3_n4qym")
+text = "Next Level"
+
+[node name="Back" type="Button" parent="Menu/Controls"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Next")
+theme = ExtResource("3_n4qym")
+text = "Back to main menu"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="pressed" from="Menu/Controls/Next" to="." method="_next"]
+[connection signal="pressed" from="Menu/Controls/Back" to="." method="_back"]

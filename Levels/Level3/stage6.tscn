@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_dlnq2"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_oyl2k"]
-[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_76762"]
+[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://StageEnd.tscn" id="3_76762"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_10bth"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="6_lpscg"]
 [ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="7_eabxs"]

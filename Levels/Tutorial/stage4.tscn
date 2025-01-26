@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="4_t3ije"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_plg4o"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_xwk2d"]
-[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="6_wlknh"]
+[ext_resource type="PackedScene" uid="uid://bwem2tmw8ayq5" path="res://LevelEnd.tscn" id="6_wlknh"]
 [ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="8_5pukd"]
 
 [node name="stage4" type="Node2D"]
@@ -46,8 +46,10 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="LevelEnd" parent="." instance=ExtResource("6_wlknh")]
 position = Vector2(734, 477)
-scale = Vector2(-7.06857, -2.76358)
+rotation = 3.14159
+scale = Vector2(7.06857, 2.76358)
 next_scene = "res://Levels/Level1/stage1.tscn"
+main_menu = "res://MainMenu.tscn"
 
 [node name="Portal" parent="." instance=ExtResource("8_5pukd")]
 position = Vector2(721, 447)
