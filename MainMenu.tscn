@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
-[ext_resource type="Theme" uid="uid://nfmhe6is8f16" path="res://MainMenuTheme.tres" id="1_86nes"]
+[ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="4_rlj63"]
 [ext_resource type="Script" path="res://Scripts/level_select.gd" id="5_8p4u8"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="6_sso12"]
-[ext_resource type="PackedScene" uid="uid://cxddua4ec2w3d" path="res://LevelSceneButton.tscn" id="9_okk1c"]
+[ext_resource type="PackedScene" uid="uid://b0jb04p4cqso3" path="res://LevelSceneButton.tscn" id="9_okk1c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xc83h"]
 load_path = "res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"

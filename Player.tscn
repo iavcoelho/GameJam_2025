@@ -350,7 +350,6 @@ bus = &"Effects"
 
 [node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_fw5ex")
-volume_db = 24.0
 bus = &"Effects"
 
 [node name="WaterEnterSfx" type="AudioStreamPlayer2D" parent="."]
