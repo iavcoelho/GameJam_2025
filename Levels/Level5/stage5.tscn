@@ -32,7 +32,7 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_o7y72")]
 position = Vector2(-791, 503)
-scale = Vector2(-10.4621, 1.8711)
+scale = Vector2(-10.4621, 2.8311)
 next_scene = "res://Levels/Level5/stage3.tscn"
 
 [node name="Fan" parent="." instance=ExtResource("6_ro70m")]

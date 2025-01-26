@@ -33,5 +33,5 @@ fan_speed = -20.0
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_3hmyi")]
 position = Vector2(848, 367)
-scale = Vector2(1, 8.76)
+scale = Vector2(1.68, 8.76)
 next_scene = "res://Levels/Level4/stage1_1.tscn"

@@ -24,8 +24,8 @@ position = Vector2(-836, 378)
 position = Vector2(812, 368)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_p2r5w")]
-position = Vector2(867, 317)
-scale = Vector2(-5.14205, 9.9111)
+position = Vector2(864, 288)
+scale = Vector2(-5.14205, 13.9911)
 next_scene = "res://Levels/Level3/stage1.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

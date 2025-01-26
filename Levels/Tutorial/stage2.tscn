@@ -22,7 +22,7 @@ position = Vector2(-757, 142)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_w3tr8")]
 position = Vector2(813, -149)
-scale = Vector2(3.26102, -21.0567)
+scale = Vector2(3.26102, -25.1367)
 next_scene = "res://Levels/Tutorial/stage3.tscn"
 
 [node name="Sign" parent="." instance=ExtResource("5_jfxn4")]

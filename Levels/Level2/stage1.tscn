@@ -21,7 +21,7 @@ tile_set = ExtResource("1_v7d8h")
 position = Vector2(-801, -477)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_0vh7i")]
-position = Vector2(920, -411)
+position = Vector2(916, -411)
 scale = Vector2(-5.14205, 9.9111)
 next_scene = "res://Levels/Level2/stage2.tscn"
 
@@ -36,6 +36,6 @@ sign_content = Array[String](["Is this your first time reading this?"])
 content_actions = [""]
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_0vh7i")]
-position = Vector2(919, 3.99997)
+position = Vector2(917, 4)
 scale = Vector2(-5.14205, 10.9911)
 next_scene = "res://Levels/Level2/stage4.tscn"

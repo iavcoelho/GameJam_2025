@@ -21,7 +21,7 @@ tile_set = ExtResource("1_y8wxm")
 position = Vector2(-815, -180)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_5em71")]
-position = Vector2(812, 508)
+position = Vector2(814, 498)
 scale = Vector2(-6.38691, 2.539)
 next_scene = "res://Levels/Level1/stage3.tscn"
 

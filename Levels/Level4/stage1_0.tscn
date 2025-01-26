@@ -21,7 +21,7 @@ tile_set = ExtResource("1_unfps")
 position = Vector2(-815, -180)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_28424")]
-position = Vector2(864, -352)
+position = Vector2(872, -367)
 scale = Vector2(-4.06321, 11.5145)
 next_scene = "res://Levels/Level1/stage2.tscn"
 
@@ -34,6 +34,6 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 position = Vector2(832, -288)
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_28424")]
-position = Vector2(-896, 320)
+position = Vector2(-897, 326)
 scale = Vector2(2.90625, 12.4587)
 next_scene = "res://Levels/Level4/stage2_0.tscn"

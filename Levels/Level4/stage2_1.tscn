@@ -21,8 +21,8 @@ tile_set = ExtResource("1_r3l72")
 position = Vector2(-815, -180)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_276fs")]
-position = Vector2(851, -269)
-scale = Vector2(-4.06321, 11.5145)
+position = Vector2(851, -282)
+scale = Vector2(-4.06321, 21.3145)
 next_scene = "res://Levels/Level4/stage1_2.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -38,5 +38,5 @@ fan_speed = -20.0
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_276fs")]
 position = Vector2(848, 367)
-scale = Vector2(1, 8.76)
+scale = Vector2(1.71729, 8.76)
 next_scene = "res://Levels/Level4/stage1_1.tscn"
