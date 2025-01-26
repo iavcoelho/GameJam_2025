@@ -273,11 +273,15 @@ animation = &"wind_up"
 position = Vector2(0, -32)
 
 [node name="AttackSfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"BGM"
 
 [node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"BGM"
 
 [node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"BGM"
 
 [node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
+bus = &"BGM"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
