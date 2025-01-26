@@ -14,4 +14,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		get_tree().change_scene_to_file(next_scene)
+		call_deferred("_switch_level")
+		
+func _switch_level():
+	get_tree().change_scene_to_file(next_scene)
