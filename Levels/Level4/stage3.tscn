@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://ciddgro617q7x"]
+[gd_scene load_steps=6 format=4 uid="uid://ciddgro617q7x"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_te2l2"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_vflx5"]
-[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://StageEnd.tscn" id="3_4d58e"]
+[ext_resource type="PackedScene" path="res://StageEnd.tscn" id="3_4d58e"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="4_s7llq"]
+[ext_resource type="PackedScene" uid="uid://bwem2tmw8ayq5" path="res://LevelEnd.tscn" id="5_xwgju"]
 
 [node name="stage1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -29,7 +30,8 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="Background" parent="." instance=ExtResource("4_s7llq")]
 
-[node name="LevelEnd2" parent="." instance=ExtResource("3_4d58e")]
+[node name="LevelEnd3" parent="." instance=ExtResource("5_xwgju")]
 position = Vector2(-864, 320)
 scale = Vector2(1, 10.2)
-next_scene = "res://MainMenu.tscn"
+next_scene = "res://Levels/Level5/stage1.tscn"
+main_menu = "res://MainMenu.tscn"

@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_3pbrd"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_y0u16"]
-[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://StageEnd.tscn" id="3_ndg2s"]
+[ext_resource type="PackedScene" uid="uid://bwem2tmw8ayq5" path="res://LevelEnd.tscn" id="3_6xt2u"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="4_ii218"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_rgla5"]
 [ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="6_i04r7"]
@@ -22,10 +22,12 @@ tile_set = ExtResource("1_3pbrd")
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_y0u16")]
 position = Vector2(846, 402)
 
-[node name="f" parent="." instance=ExtResource("3_ndg2s")]
+[node name="LevelEnd" parent="." instance=ExtResource("3_6xt2u")]
 position = Vector2(-827, 345)
-scale = Vector2(-5.14205, 9.9111)
-next_scene = "res://MainMenu.tscn"
+rotation = 3.14159
+scale = Vector2(5.14205, -9.9111)
+next_scene = "res://Levels/Tutorial/stage1.tscn"
+main_menu = "res://MainMenu.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
