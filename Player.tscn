@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=47 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
@@ -12,6 +12,31 @@
 [ext_resource type="AudioStream" uid="uid://ddruveggn5frf" path="res://Audio/bubble_spawn_4.wav" id="5_ntylr"]
 [ext_resource type="AudioStream" uid="uid://b5cgqad52w5n0" path="res://Audio/bubble_spawn_5.wav" id="6_fcm1c"]
 [ext_resource type="AudioStream" uid="uid://j7gqve5nwuae" path="res://Audio/jumping.wav" id="12_674sy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vvphf"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_8f8dj"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k7fem"]
+gradient = SubResource("Gradient_8f8dj")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.65, 0.8)
+
+[sub_resource type="Gradient" id="Gradient_536hb"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xn1u4"]
+gradient = SubResource("Gradient_536hb")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.65, 0.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
 size = Vector2(30, 64)
@@ -258,10 +283,21 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = -1
+material = SubResource("CanvasItemMaterial_vvphf")
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_ja7ur")
 attack_sfx = Array[AudioStream]([ExtResource("2_ky847"), ExtResource("3_4j3hx"), ExtResource("4_wrnbd"), ExtResource("5_ntylr"), ExtResource("6_fcm1c")])
+
+[node name="ShadowCaster" type="PointLight2D" parent="."]
+range_layer_max = 1
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_k7fem")
+
+[node name="LightCaster" type="PointLight2D" parent="."]
+range_layer_max = 1
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_xn1u4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_15m67")

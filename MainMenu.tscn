@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
-[ext_resource type="Texture2D" uid="uid://dmv74kdpkvs20" path="res://Sprites/background.png" id="2_4lxme"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="2_o6n5n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xc83h"]
+load_path = "res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47c5.ctex"
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button")]
 layout_mode = 3
@@ -22,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_4lxme")
+texture = SubResource("CompressedTexture2D_xc83h")
 stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

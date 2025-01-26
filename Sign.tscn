@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpdm08oeh2n2v"]
+[gd_scene load_steps=11 format=3 uid="uid://dpdm08oeh2n2v"]
 
 [ext_resource type="Texture2D" uid="uid://bh0fx5ciymkkt" path="res://Sprites/Sign.png" id="1_8g6m8"]
 [ext_resource type="Script" path="res://Scripts/sign.gd" id="2_trq50"]
@@ -41,6 +41,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ff2p"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1qif2"]
+light_mode = 1
+
 [node name="Sign" type="Node2D"]
 z_index = -2
 script = ExtResource("2_trq50")
@@ -62,6 +68,7 @@ sprite_frames = SubResource("SpriteFrames_1csat")
 animation = &"Idle"
 
 [node name="Content" type="Label" parent="."]
+material = SubResource("CanvasItemMaterial_0ff2p")
 offset_left = -176.0
 offset_top = -268.0
 offset_right = 177.0
@@ -75,6 +82,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Interact" type="Label" parent="."]
+material = SubResource("CanvasItemMaterial_1qif2")
 offset_left = -133.0
 offset_top = -56.0
 offset_right = 134.0

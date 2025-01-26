@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://qlvkdyc6c1v5"]
+[gd_scene load_steps=13 format=3 uid="uid://qlvkdyc6c1v5"]
 
 [ext_resource type="Script" path="res://Scripts/fan.gd" id="1_6jbd0"]
-[ext_resource type="Texture2D" uid="uid://cfdg0mvyqir0x" path="res://Sprites/Swirl_Animatation.png" id="2_upomo"]
-[ext_resource type="Texture2D" uid="uid://cyxvxi88lbp3l" path="res://Sprites/Swirl_Animatation2.png" id="3_il2or"]
+[ext_resource type="Texture2D" uid="uid://cyxvxi88lbp3l" path="res://Sprites/Swirl_Animatation.png" id="3_il2or"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hdxt"]
 size = Vector2(64, 256)
@@ -25,22 +24,6 @@ scale_min = 2.0
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_rbrj2")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcbmh"]
-atlas = ExtResource("2_upomo")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_86aab"]
-atlas = ExtResource("2_upomo")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fam8u"]
-atlas = ExtResource("2_upomo")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0y6e"]
-atlas = ExtResource("2_upomo")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kmfy"]
 atlas = ExtResource("3_il2or")
 region = Rect2(0, 0, 32, 32)
@@ -61,23 +44,6 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcbmh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_86aab")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fam8u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0y6e")
-}],
-"loop": true,
-"name": &"spinning",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_6kmfy")
 }, {
 "duration": 1.0,
@@ -90,7 +56,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_36la5")
 }],
 "loop": true,
-"name": &"spinning2",
+"name": &"spinning",
 "speed": 16.0
 }]
 
@@ -118,9 +84,10 @@ trail_lifetime = 0.1
 position = Vector2(0, 146)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5tgd5")
-animation = &"spinning2"
-autoplay = "spinning2"
-frame_progress = 0.343193
+animation = &"spinning"
+autoplay = "spinning"
+frame = 1
+frame_progress = 0.442887
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

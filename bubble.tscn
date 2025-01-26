@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sx3n8a0ufkik"]
+[gd_scene load_steps=15 format=3 uid="uid://sx3n8a0ufkik"]
 
 [ext_resource type="Script" path="res://Scripts/bubble.gd" id="1_f2k38"]
 [ext_resource type="Texture2D" uid="uid://dr21pge5fcb3" path="res://Sprites/Bubble.png" id="2_sxkex"]
@@ -11,6 +11,9 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tfih"]
 radius = 9.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_312b2"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kuxm"]
 atlas = ExtResource("3_65uk0")
@@ -96,6 +99,7 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_8tfih")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_312b2")
 sprite_frames = SubResource("SpriteFrames_if133")
 animation = &"shoot"
 frame_progress = 0.580547
