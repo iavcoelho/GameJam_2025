@@ -32,7 +32,7 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 
 [node name="Sign" parent="." instance=ExtResource("7_8i4hf")]
 position = Vector2(-444, 387)
-sign_content = Array[String](["Is this your first tinme reading this?"])
+sign_content = Array[String](["Is this your first time reading this?"])
 content_actions = [""]
 
 [node name="LevelEnd2" parent="." instance=ExtResource("3_0vh7i")]

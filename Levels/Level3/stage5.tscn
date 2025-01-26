@@ -44,7 +44,7 @@ theme_override_fonts/font = ExtResource("6_y57ts")
 theme_override_font_sizes/font_size = 25
 text = "
 I know, I know....
-This is peak level designing!"
+This is peak level design!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
