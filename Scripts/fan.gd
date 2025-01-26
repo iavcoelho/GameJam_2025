@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			# Sway from side to side when in center column
 			skew = sign(dot) * 2 * dampening
 		
-		var towards_force = Vector2.RIGHT * skew
+		var towards_force = forward * skew
 		
 		var up_distance: float = (diff - diff.dot(forward) * forward).length()
 		var up_percent = up_distance / area_size_y
