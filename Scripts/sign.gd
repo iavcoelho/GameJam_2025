@@ -15,7 +15,6 @@ var progress_sign_text = "'{input}' to keep reading"
 @onready var interact_label = $Interact
 var content_tween: Tween
 var interact_tween: Tween
-var using_gamepad = true
 var first_interaction = true
 	
 func format_text(input: String):
@@ -24,7 +23,8 @@ func format_text(input: String):
 	return text.format({"input": input})
 
 func _ready() -> void:
-	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	SignInputSingleton.input_changed.connect(_update_label_input)
+	_update_label_input()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -36,19 +36,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player: 
 		_animated_sprite.play("Idle")
 		interactable = false
-	
+
+func _update_label_input() -> void:
+	_update_label(interact_label, format_text, "read_sign")
+	_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), content_actions[sign_progress] if sign_progress != content_length else "")
 
 func _input(event) -> void:
-	if using_gamepad:
-		if event is InputEventMouseButton or event is InputEventKey:
-			using_gamepad = false
-			_update_label(interact_label, format_text, "read_sign")
-			_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), content_actions[sign_progress] if sign_progress != content_length else "")
-	else:
-		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-			using_gamepad = true
-			_update_label(interact_label, format_text, "read_sign")
-			_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), content_actions[sign_progress] if sign_progress != content_length else "")
 	if interactable and event.is_action_pressed("read_sign"):
 		if content_tween != null and content_tween.is_running():
 			content_tween.custom_step(2)
@@ -93,7 +86,7 @@ func _update_label(label: Label, format: Callable, action: String) -> void:
 		return
 	
 	for event in InputMap.action_get_events(action):
-		if using_gamepad:
+		if SignInputSingleton.using_gamepad:
 			if event is InputEventJoypadButton:
 				var button = "None"
 				match event.button_index:
@@ -124,9 +117,3 @@ func _update_label(label: Label, format: Callable, action: String) -> void:
 				key = DisplayServer.keyboard_get_label_from_physical(event.physical_keycode)
 			label.text = format.call(OS.get_keycode_string(key))
 			break
-	
-
-
-func _on_joy_connection_changed(_device:int, connected:bool) -> void:
-	using_gamepad = connected
-	_update_label(interact_label, format_text, "read_sign")
