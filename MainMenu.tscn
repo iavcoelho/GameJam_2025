@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://devyol8jofdxj"]
+[gd_scene load_steps=12 format=3 uid="uid://devyol8jofdxj"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_6n0n1"]
 [ext_resource type="Theme" uid="uid://bs35oii8fql0e" path="res://MainMenuTheme.tres" id="1_86nes"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://Scripts/options_menu.gd" id="4_rlj63"]
 [ext_resource type="Script" path="res://Scripts/level_select.gd" id="5_8p4u8"]
 [ext_resource type="Script" path="res://Scripts/level.gd" id="6_sso12"]
-[ext_resource type="PackedScene" uid="uid://hr5x2m2e3qmt" path="res://Levels/Tutorial/stage1.tscn" id="7_nbag8"]
-[ext_resource type="PackedScene" uid="uid://rtwt4nyxibaa" path="res://Levels/Level1/stage1.tscn" id="8_xocie"]
 [ext_resource type="PackedScene" uid="uid://b0jb04p4cqso3" path="res://LevelSceneButton.tscn" id="9_okk1c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xc83h"]
@@ -16,12 +14,17 @@ load_path = "res://.godot/imported/background.png-4fa92766cad903a1a79b587b09bd47
 [sub_resource type="Resource" id="Resource_f6csp"]
 script = ExtResource("6_sso12")
 name = "Tutorial"
-scene = ExtResource("7_nbag8")
+scene = "res://Levels/Tutorial/stage1.tscn"
 
 [sub_resource type="Resource" id="Resource_jukg6"]
 script = ExtResource("6_sso12")
 name = "Level 1"
-scene = ExtResource("8_xocie")
+scene = "res://Levels/Level1/stage1.tscn"
+
+[sub_resource type="Resource" id="Resource_675dw"]
+script = ExtResource("6_sso12")
+name = "Level 2"
+scene = "res://Levels/Level2/stage1.tscn"
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("start_button", "main_menu", "level_select_menu", "options_menu")]
 layout_mode = 3
@@ -32,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6n0n1")
 start_button = NodePath("MarginContainer/HBoxContainer/MainMenu/Play")
+first_level = "res://Levels/Tutorial/stage1.tscn"
 main_menu = NodePath("MarginContainer/HBoxContainer/MainMenu")
 level_select_menu = NodePath("MarginContainer/HBoxContainer/LevelSelect")
 options_menu = NodePath("MarginContainer/HBoxContainer/Options")
@@ -183,7 +187,7 @@ theme_override_constants/separation = 26
 alignment = 1
 script = ExtResource("5_8p4u8")
 level_button = ExtResource("9_okk1c")
-levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6")])
+levels = Array[ExtResource("6_sso12")]([SubResource("Resource_f6csp"), SubResource("Resource_jukg6"), SubResource("Resource_675dw")])
 
 [node name="Back" type="Button" parent="MarginContainer/HBoxContainer/LevelSelect"]
 layout_mode = 2

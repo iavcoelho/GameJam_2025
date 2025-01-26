@@ -19,4 +19,4 @@ position = Vector2(-761, 177)
 
 [node name="Sign" parent="." instance=ExtResource("3_oh46m")]
 position = Vector2(-612, 259)
-sign_content = ["adwdwadwa", "Teste", "adawdawd"]
+sign_content = Array[String](["adwdwadwa", "Teste", "adawdawd"])

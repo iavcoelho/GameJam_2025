@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://clibds7nw6od6"]
+[gd_scene load_steps=6 format=4 uid="uid://clibds7nw6od6"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_yq7so"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_6g4lv"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_ijtxb"]
-[ext_resource type="PackedScene" uid="uid://c3kbqya3rapes" path="res://Levels/Tutorial/stage4.tscn" id="4_bgomi"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_62ff1"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="6_7mve5"]
 
@@ -24,7 +23,7 @@ position = Vector2(-752, 6)
 [node name="LevelEnd" parent="." instance=ExtResource("3_ijtxb")]
 position = Vector2(805, -113)
 scale = Vector2(-2.78984, -17.5477)
-next_scene = ExtResource("4_bgomi")
+next_scene = "res://Levels/Tutorial/stage4.tscn"
 
 [node name="Sign" parent="." instance=ExtResource("5_62ff1")]
 position = Vector2(-585, 35)

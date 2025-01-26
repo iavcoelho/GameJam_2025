@@ -19,8 +19,8 @@ func _ready() -> void:
 		
 		_last_button = button
 
-func _load_level(scene: PackedScene) -> void:
-	get_tree().change_scene_to_packed(scene)
+func _load_level(scene: String) -> void:
+	get_tree().change_scene_to_file(scene)
 
 func _on_visibility_changed() -> void:
 	if self.visible:

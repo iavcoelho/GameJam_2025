@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://duiwuriwqtrnj" path="res://Sprites/tile.png" id="1_lyq7e"]
 [ext_resource type="Texture2D" uid="uid://cl8ifolmd38pk" path="res://Sprites/Terrain.png" id="2_88xed"]
 [ext_resource type="Texture2D" uid="uid://pk7ayk3c6kut" path="res://Sprites/water2.png" id="3_2k3vv"]
-[ext_resource type="Texture2D" uid="uid://db6c2ufqiuedh" path="res://Sprites/stalatites1.png" id="3_fnrd5"]
+[ext_resource type="Texture2D" uid="uid://csuvxcourt2ob" path="res://Sprites/stalatites1.png" id="3_fnrd5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xtshb"]
 friction = 0.05

@@ -1,7 +1,7 @@
 extends Control
 
 @export var start_button: Control = null
-@export var first_level: PackedScene = preload("res://Levels/Tutorial/stage1.tscn")
+@export_file("*.tscn") var first_level: String
 
 @export var main_menu: Control = null
 @export var level_select_menu: Control = null
@@ -11,7 +11,7 @@ func _ready():
 	start_button.grab_focus()
 
 func play_pressed() -> void:
-	get_tree().change_scene_to_packed(first_level)
+	get_tree().change_scene_to_file(first_level)
 
 func level_select_pressed() -> void:
 	main_menu.visible = false

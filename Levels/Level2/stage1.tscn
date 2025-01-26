@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://csupot13bufrq"]
+[gd_scene load_steps=6 format=4 uid="uid://csupot13bufrq"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_v7d8h"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_d3um4"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_0vh7i"]
-[ext_resource type="PackedScene" uid="uid://2qprw86v0noe" path="res://Levels/Level2/stage2.tscn" id="4_wbghy"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_v8sma"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="7_8i4hf"]
-[ext_resource type="PackedScene" uid="uid://cfnr1r3gbllc0" path="res://Levels/Level2/stage4.tscn" id="7_oti4b"]
 
 [node name="stage1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -25,7 +23,7 @@ position = Vector2(-801, -477)
 [node name="LevelEnd" parent="." instance=ExtResource("3_0vh7i")]
 position = Vector2(920, -411)
 scale = Vector2(-5.14205, 9.9111)
-next_scene = ExtResource("4_wbghy")
+next_scene = "res://Levels/Level2/stage2.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
@@ -40,4 +38,4 @@ content_actions = [""]
 [node name="LevelEnd2" parent="." instance=ExtResource("3_0vh7i")]
 position = Vector2(919, 3.99997)
 scale = Vector2(-5.14205, 10.9911)
-next_scene = ExtResource("7_oti4b")
+next_scene = "res://Levels/Level2/stage4.tscn"

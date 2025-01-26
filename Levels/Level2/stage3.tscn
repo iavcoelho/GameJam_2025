@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://rjiktmfdfj3v"]
+[gd_scene load_steps=6 format=4 uid="uid://rjiktmfdfj3v"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_mh58k"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_8vtrg"]
-[ext_resource type="PackedScene" uid="uid://durr7r1rnhr78" path="res://Portal.tscn" id="3_hwsj3"]
+[ext_resource type="PackedScene" path="res://Portal.tscn" id="3_hwsj3"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_p2r5w"]
-[ext_resource type="PackedScene" uid="uid://devyol8jofdxj" path="res://MainMenu.tscn" id="4_ubhx5"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_darc7"]
 
 [node name="stage1" type="Node2D"]
@@ -27,7 +26,7 @@ position = Vector2(812, 368)
 [node name="LevelEnd" parent="." instance=ExtResource("3_p2r5w")]
 position = Vector2(867, 317)
 scale = Vector2(-5.14205, 9.9111)
-next_scene = ExtResource("4_ubhx5")
+next_scene = "res://MainMenu.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
