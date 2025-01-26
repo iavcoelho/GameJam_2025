@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bxvq63n0i1lut"]
+[gd_scene load_steps=9 format=4 uid="uid://bxvq63n0i1lut"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_c5s50"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_6q31h"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_8x8yh"]
 [ext_resource type="PackedScene" uid="uid://cm5btw1ti1enx" path="res://Fan.tscn" id="6_2v0tq"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="7_yysag"]
+[ext_resource type="PackedScene" uid="uid://durr7r1rnhr78" path="res://Portal.tscn" id="8_d7lw5"]
 
 [node name="stage1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -23,7 +24,7 @@ tile_set = ExtResource("1_c5s50")
 position = Vector2(-801, -477)
 
 [node name="LevelEnd" parent="." instance=ExtResource("3_5ilyx")]
-position = Vector2(913, -375)
+position = Vector2(870, -381)
 scale = Vector2(-5.14205, 13.7511)
 next_scene = ExtResource("4_3thjd")
 
@@ -40,3 +41,6 @@ scale = Vector2(1, 0.519998)
 position = Vector2(243, -189)
 sign_content = Array[String](["Don't go falling now"])
 content_actions = [""]
+
+[node name="Portal" parent="." instance=ExtResource("8_d7lw5")]
+position = Vector2(818, -304)
