@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cagrtvvwsuc5j"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cagrtvvwsuc5j"]
 
 [ext_resource type="Texture2D" uid="uid://duiwuriwqtrnj" path="res://Sprites/tile.png" id="1_lyq7e"]
 [ext_resource type="Texture2D" uid="uid://bo03fgwdwudu1" path="res://Sprites/blank.png" id="1_xbvdk"]
+[ext_resource type="Texture2D" uid="uid://l73arwtb8eg4" path="res://Sprites/water2.png" id="3_2k3vv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xtshb"]
 friction = 0.05
@@ -27,6 +28,37 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcy0p"]
+texture = ExtResource("3_2k3vv")
+texture_region_size = Vector2i(32, 32)
+0:0/animation_columns = 2
+0:0/animation_speed = 4.0
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 7.6014, 16, 7.6014, 16, 16, -16, 16)
+0:0/0/custom_data_1 = true
+0:1/animation_columns = 2
+0:1/animation_speed = 4.0
+0:1/animation_frame_0/duration = 1.0
+0:1/animation_frame_1/duration = 1.0
+0:1/0 = 0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0/custom_data_1 = true
+0:2/animation_columns = 2
+0:2/animation_speed = 4.0
+0:2/animation_frame_0/duration = 1.0
+0:2/animation_frame_1/duration = 1.0
+0:2/0 = 0
+0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 4.95562, 16, 4.875, 16, 9.625, 16, 16, -16, 16)
+0:2/0/custom_data_1 = true
+0:3/0 = 0
+0:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0/custom_data_1 = true
+1:3/0 = 0
+1:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0/custom_data_1 = true
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -39,3 +71,4 @@ custom_data_layer_1/name = "save_bubble"
 custom_data_layer_1/type = 1
 sources/2 = SubResource("TileSetAtlasSource_p8tv0")
 sources/0 = SubResource("TileSetAtlasSource_hndjr")
+sources/4 = SubResource("TileSetAtlasSource_xcy0p")
