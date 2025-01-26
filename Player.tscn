@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=48 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ddruveggn5frf" path="res://Audio/bubble_spawn_4.wav" id="5_ntylr"]
 [ext_resource type="AudioStream" uid="uid://b5cgqad52w5n0" path="res://Audio/bubble_spawn_5.wav" id="6_fcm1c"]
 [ext_resource type="AudioStream" uid="uid://j7gqve5nwuae" path="res://Audio/jumping.wav" id="12_674sy"]
+[ext_resource type="AudioStream" uid="uid://cqjsawxqm2x7c" path="res://Audio/landing.wav" id="13_fw5ex"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vvphf"]
 light_mode = 1
@@ -318,9 +319,8 @@ stream = ExtResource("12_674sy")
 bus = &"BGM"
 
 [node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
-bus = &"BGM"
-
-[node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_fw5ex")
+volume_db = 24.0
 bus = &"BGM"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

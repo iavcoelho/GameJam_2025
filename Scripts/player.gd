@@ -43,7 +43,6 @@ var animation_state: AnimationStates = AnimationStates.NORMAL
 @onready var _attack_audio_player: AudioStreamPlayer2D = $AttackSfx
 @onready var _jump_audio_player: AudioStreamPlayer2D = $JumpSfx
 @onready var _landing_audio_player: AudioStreamPlayer2D = $LandingSfx
-@onready var _death_audio_player: AudioStreamPlayer2D = $DeathSfx
 
 func _ready() -> void:
 	self.shoot_parent = get_parent()
@@ -84,6 +83,7 @@ func die():
 	self.animation_state = AnimationStates.DYING
 	self.velocity.x = 0.0
 	_animated_sprite.play("die")
+	DeathSfx.play()
 
 func finish_death():
 	get_tree().reload_current_scene()
@@ -148,6 +148,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not self.prev_on_floor:
 			self.animation_state = AnimationStates.LANDING
+			_landing_audio_player.play()
 
 	if not self.dying:
 		self.prev_on_floor = is_on_floor()
