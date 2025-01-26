@@ -122,6 +122,7 @@ func start_jump() -> void:
 	self.jump_time = 0.0
 
 	self.animation_state = AnimationStates.JUMPING
+	self._jump_audio_player.play()
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

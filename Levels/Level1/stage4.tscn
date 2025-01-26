@@ -2,10 +2,11 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_cpwnx"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_x5och"]
-[ext_resource type="PackedScene" uid="uid://cm5btw1ti1enx" path="res://Fan.tscn" id="3_07rne"]
+[ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="3_07rne"]
 
 [node name="Level1" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [221.0, 447.0]
+metadata/_edit_horizontal_guides_ = [221.0, 447.0, 64.0, -163.0]
+metadata/_edit_vertical_guides_ = [-287.0, -608.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

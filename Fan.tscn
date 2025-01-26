@@ -119,6 +119,7 @@ position = Vector2(0, 146)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5tgd5")
 animation = &"spinning2"
+autoplay = "spinning2"
 frame_progress = 0.343193
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

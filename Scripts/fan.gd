@@ -5,16 +5,15 @@ extends Area2D
 
 var bubbles: Array[Bubble] = []
 
-@onready var up = get_global_transform().y
-@onready var forward = get_global_transform().x
-@onready var center_point = get_global_transform().origin
+@onready var area_half_size_x = get_global_transform().get_scale().x * $CollisionShape2D.shape.get_rect().size.x / 2
+@onready var area_size_y = get_global_transform().get_scale().y * $CollisionShape2D.shape.get_rect().size.y
 
-@onready var area_half_size_x = $CollisionShape2D.shape.get_rect().size.x / 2
-@onready var area_half_size_y = $CollisionShape2D.shape.get_rect().size.y / 2
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var up = get_global_transform().y.normalized()
+@onready var forward = get_global_transform().x.normalized()
+@onready var center_point = get_global_transform().origin + up * (area_size_y / 2)
 
 func _ready() -> void:
-	_animated_sprite.play("spinning2")
+	$GPUParticles2D.lifetime = sqrt(2 * area_size_y / 98)
 
 func _physics_process(delta: float) -> void:
 	for bubble_idx in range(bubbles.size() - 1, -1, -1):
@@ -45,12 +44,10 @@ func _physics_process(delta: float) -> void:
 		var towards_force = Vector2.RIGHT * skew
 		
 		var up_distance: float = (diff - diff.dot(forward) * forward).length()
-		var up_percent = up_distance / area_half_size_y
-		if up_percent > 1.0:
-			up_percent = 1.0
+		var up_percent = up_distance / area_size_y
 		
 		var up_skew: float
-		if up_percent > 0.8:
+		if up_percent > 0.9:
 			var up_dot = bubble.linear_velocity.dot(up)
 			up_skew = -sign(up_dot) * -ease(up_percent, 0.2)
 		else:

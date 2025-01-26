@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://hr5x2m2e3qmt"]
+[gd_scene load_steps=7 format=4 uid="uid://hr5x2m2e3qmt"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_da40d"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_rtse5"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="3_j2822"]
-[ext_resource type="PackedScene" path="res://LevelEnd.tscn" id="4_14s0s"]
+[ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="4_14s0s"]
 [ext_resource type="PackedScene" uid="uid://bl838v1s77g7r" path="res://Levels/Level1/stage2.tscn" id="5_yukc1"]
+[ext_resource type="Texture2D" uid="uid://dmv74kdpkvs20" path="res://Sprites/background.png" id="6_y20w0"]
 
 [node name="Level1" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0]
@@ -26,3 +27,13 @@ position = Vector2(-612, 262)
 position = Vector2(793, -144)
 scale = Vector2(-4.06321, 33.7545)
 next_scene = ExtResource("5_yukc1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_y20w0")
+stretch_mode = 6

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=42 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bqcatwsu7flrr" path="res://Audio/bubble_spawn_3.wav" id="4_wrnbd"]
 [ext_resource type="AudioStream" uid="uid://ddruveggn5frf" path="res://Audio/bubble_spawn_4.wav" id="5_ntylr"]
 [ext_resource type="AudioStream" uid="uid://b5cgqad52w5n0" path="res://Audio/bubble_spawn_5.wav" id="6_fcm1c"]
+[ext_resource type="AudioStream" uid="uid://j7gqve5nwuae" path="res://Audio/jumping.wav" id="12_674sy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
 size = Vector2(30, 64)
@@ -277,6 +278,7 @@ position = Vector2(0, -32)
 bus = &"BGM"
 
 [node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_674sy")
 bus = &"BGM"
 
 [node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
