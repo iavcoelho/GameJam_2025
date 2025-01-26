@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm5btw1ti1enx"]
+[gd_scene load_steps=18 format=3 uid="uid://qlvkdyc6c1v5"]
 
 [ext_resource type="Script" path="res://Scripts/fan.gd" id="1_6jbd0"]
 [ext_resource type="Texture2D" uid="uid://cfdg0mvyqir0x" path="res://Sprites/Swirl_Animatation.png" id="2_upomo"]

@@ -14,6 +14,8 @@ class_name Player
 
 @export var Bullet = preload("res://bubble.tscn")
 
+@export var attack_sfx: Array[AudioStream] = []
+
 var shoot_parent: Node
 var direction_inherit: float = 1
 var can_fire: bool = false
@@ -38,6 +40,10 @@ enum AnimationStates {
 var animation_state: AnimationStates = AnimationStates.NORMAL
 
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _attack_audio_player: AudioStreamPlayer2D = $AttackSfx
+@onready var _jump_audio_player: AudioStreamPlayer2D = $JumpSfx
+@onready var _landing_audio_player: AudioStreamPlayer2D = $LandingSfx
+@onready var _death_audio_player: AudioStreamPlayer2D = $DeathSfx
 
 func _ready() -> void:
 	self.shoot_parent = get_parent()
@@ -66,6 +72,11 @@ func _input(event: InputEvent):
 		self.can_fire = false
 		self.animation_state = AnimationStates.WIND_UP
 		_animated_sprite.play("wind_up")
+		
+		_attack_audio_player.stop()
+		_attack_audio_player.stream = self.attack_sfx.pick_random()
+		_attack_audio_player.play()
+		
 		return
 
 func die():

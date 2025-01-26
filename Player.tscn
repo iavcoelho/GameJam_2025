@@ -1,11 +1,16 @@
-[gd_scene load_steps=37 format=3 uid="uid://ciuel7s0x42qd"]
+[gd_scene load_steps=41 format=3 uid="uid://ciuel7s0x42qd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_ja7ur"]
 [ext_resource type="Texture2D" uid="uid://dy6w54tj41um2" path="res://Sprites/Character_jump.png" id="2_hbiek"]
+[ext_resource type="AudioStream" uid="uid://fjr0d1sdhgsc" path="res://Audio/bubble_spawn_1.wav" id="2_ky847"]
 [ext_resource type="Texture2D" uid="uid://d2kxif1pncxa1" path="res://Sprites/Character_Idle.png" id="2_n5urc"]
 [ext_resource type="Texture2D" uid="uid://dudy3oy1gncim" path="res://Sprites/Character_attack.png" id="2_tprlv"]
+[ext_resource type="AudioStream" uid="uid://c3b6crdlrc7wk" path="res://Audio/bubble_spawn_2.wav" id="3_4j3hx"]
 [ext_resource type="Texture2D" uid="uid://ds1qbvnyfl2fn" path="res://Sprites/Character_die.png" id="3_8ti32"]
 [ext_resource type="Texture2D" uid="uid://b5wk6y48yxrxq" path="res://Sprites/Character_Running.png" id="3_cm5c4"]
+[ext_resource type="AudioStream" uid="uid://bqcatwsu7flrr" path="res://Audio/bubble_spawn_3.wav" id="4_wrnbd"]
+[ext_resource type="AudioStream" uid="uid://ddruveggn5frf" path="res://Audio/bubble_spawn_4.wav" id="5_ntylr"]
+[ext_resource type="AudioStream" uid="uid://b5cgqad52w5n0" path="res://Audio/bubble_spawn_5.wav" id="6_fcm1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m67"]
 size = Vector2(30, 64)
@@ -101,10 +106,6 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cj1kw"]
 atlas = ExtResource("2_hbiek")
 region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rkcee"]
-atlas = ExtResource("2_tprlv")
-region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bl71p"]
 atlas = ExtResource("2_tprlv")
@@ -238,9 +239,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rkcee")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_bl71p")
 }, {
 "duration": 1.0,
@@ -261,6 +259,7 @@ animations = [{
 z_index = -1
 collision_layer = 3
 script = ExtResource("1_ja7ur")
+attack_sfx = Array[AudioStream]([ExtResource("2_ky847"), ExtResource("3_4j3hx"), ExtResource("4_wrnbd"), ExtResource("5_ntylr"), ExtResource("6_fcm1c")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_15m67")
@@ -268,8 +267,17 @@ shape = SubResource("RectangleShape2D_15m67")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_obvvr")
-animation = &"die"
-frame = 3
-frame_progress = 1.0
+animation = &"wind_up"
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="AttackSfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="JumpSfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="LandingSfx" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DeathSfx" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
