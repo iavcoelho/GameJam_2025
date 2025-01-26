@@ -24,6 +24,8 @@ position = Vector2(-761, 177)
 [node name="Sign" parent="." instance=ExtResource("3_j2822")]
 z_index = 0
 position = Vector2(-612, 262)
+sign_content = ["Welcome to the", "Shadow Cave", "The world works a bit different here so lets put u up to speeed", "Press '{input}' to jump!"]
+content_actions = ["", "", "", "jump"]
 
 [node name="LevelEnd" parent="." instance=ExtResource("4_14s0s")]
 position = Vector2(793, -144)

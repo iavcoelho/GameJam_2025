@@ -5,6 +5,7 @@ var interactable: bool = false
 @onready var _animated_sprite = $Area2D/AnimatedSprite2D
 
 @export var sign_content = []
+@export var content_actions = []
 @onready var content_length = len(sign_content)
 @onready var sign_progress = content_length
 
@@ -23,7 +24,6 @@ func format_text(input: String):
 	return text.format({"input": input})
 
 func _ready() -> void:
-	print("ready")
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -43,18 +43,19 @@ func _input(event) -> void:
 		if event is InputEventMouseButton or event is InputEventKey:
 			using_gamepad = false
 			_update_label(interact_label, format_text, "read_sign")
-			_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), "shoot")
+			_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), content_actions[sign_progress] if sign_progress != content_length else "")
 	else:
 		if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 			using_gamepad = true
 			_update_label(interact_label, format_text, "read_sign")
-			_update_label(sign_label,func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), "shoot")
+			_update_label(sign_label, func(input): return (sign_content[sign_progress] if sign_progress != content_length else "").format({"input": input}), content_actions[sign_progress] if sign_progress != content_length else "")
 	if interactable and event.is_action_pressed("read_sign"):
 		if content_tween != null and content_tween.is_running():
 			content_tween.custom_step(2)
 			return
 		sign_progress = (sign_progress + 1) % (content_length + 1)
 		content_tween = create_tween()
+		print (sign_progress)
 		
 		var fade_out: PropertyTweener
 		
@@ -67,7 +68,7 @@ func _input(event) -> void:
 			
 			fade_out = content_tween.tween_property(sign_label, "modulate:a", 0.0, 1.0)
 			content_tween.tween_property(sign_label, "modulate:a", 1.0, 1.0)
-			fade_out.connect("finished", func(): _update_label(sign_label, func(input): return "", "shoot"))
+			fade_out.connect("finished", func(): _update_label(sign_label, func(input): return "", "shooot"))
 			return
 			
 		
@@ -79,16 +80,20 @@ func _input(event) -> void:
 			fade_out.connect("finished", func(): _update_label(interact_label, format_text, "read_sign"))
 			
 			content_tween.tween_property(sign_label, "modulate:a", 0.0, 0.0)
-			_update_label(sign_label, func(input): return sign_content[sign_progress].format({"input": input}), "shoot")
+			_update_label(sign_label, func(input): return sign_content[sign_progress].format({"input": input}), content_actions[sign_progress])
 			sign_label.text = sign_content[sign_progress]
 			content_tween.tween_property(sign_label, "modulate:a", 1.0, 1.0)
 			return
 			
 		fade_out = content_tween.tween_property(sign_label, "modulate:a", 0.0, 1.0)
 		content_tween.tween_property(sign_label, "modulate:a", 1.0, 1.0)
-		fade_out.connect("finished", func(): _update_label(sign_label, func(input): return sign_content[sign_progress].format({"input": input}), "shoot"))
+		fade_out.connect("finished", func(): _update_label(sign_label, func(input): return sign_content[sign_progress].format({"input": input}), content_actions[sign_progress]))
 
 func _update_label(label: Label, format: Callable, action: String) -> void:
+	if action == "":
+		label.text = format.call("")
+		return
+	
 	for event in InputMap.action_get_events(action):
 		if using_gamepad:
 			if event is InputEventJoypadButton:
@@ -121,6 +126,7 @@ func _update_label(label: Label, format: Callable, action: String) -> void:
 				key = DisplayServer.keyboard_get_label_from_physical(event.physical_keycode)
 			label.text = format.call(OS.get_keycode_string(key))
 			break
+	
 
 
 func _on_joy_connection_changed(_device:int, connected:bool) -> void:
