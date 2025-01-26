@@ -65,7 +65,7 @@ func shoot() -> void:
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("reset"):
-		die()
+		_reset()
 		return
 		
 	if self.dying:
@@ -90,12 +90,9 @@ func die():
 	_animated_sprite.play("die")
 	DeathSfx.play()
 
-func finish_death():
-	get_tree().reload_current_scene()
-
 func _process(_delta: float) -> void:
 	if position.y > kill_plane:
-		finish_death()
+		_reset()
 		
 	match self.animation_state:
 		AnimationStates.JUMPING:
@@ -136,7 +133,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		self.animation_state = AnimationStates.ATTACKING
 		_animated_sprite.play("attack")
 	elif self.animation_state == AnimationStates.DYING:
-		finish_death()
+		_reset()
 	else:
 		self.animation_state = AnimationStates.NORMAL
 
@@ -252,3 +249,7 @@ func _on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index
 					AudioServer.set_bus_effect_enabled(_master_bus, i, false)
 					
 				_gravity_coeff = 1.0
+
+
+func _reset() -> void:
+	get_tree().reload_current_scene()
