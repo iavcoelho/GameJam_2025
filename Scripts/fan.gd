@@ -14,6 +14,8 @@ var bubbles: Array[Bubble] = []
 
 func _ready() -> void:
 	$GPUParticles2D.lifetime = sqrt(2 * area_size_y / 98)
+	var particle_gravity = -up * 98
+	($GPUParticles2D.process_material as ParticleProcessMaterial).gravity = Vector3(particle_gravity.x, particle_gravity.y, 0.0)
 
 func _physics_process(delta: float) -> void:
 	for bubble_idx in range(bubbles.size() - 1, -1, -1):
