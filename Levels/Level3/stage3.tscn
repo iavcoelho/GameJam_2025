@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://butiuhfc2m2bk"]
+[gd_scene load_steps=8 format=4 uid="uid://butiuhfc2m2bk"]
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_644c4"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="2_030a5"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="3_8807g"]
-[ext_resource type="PackedScene" uid="uid://c1nxnh1qus2ub" path="res://Levels/Level3/stage1_3.tscn" id="4_lwcr4"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_njio3"]
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="6_ayv6j"]
 [ext_resource type="PackedScene" path="res://Portal.tscn" id="7_bablv"]
@@ -28,7 +27,6 @@ position = Vector2(-824, 354)
 [node name="LevelEnd" parent="." instance=ExtResource("3_8807g")]
 position = Vector2(747, 498)
 scale = Vector2(10.0198, -1.58716)
-next_scene = ExtResource("4_lwcr4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.466181, 0.466181, 0.466181, 1)
