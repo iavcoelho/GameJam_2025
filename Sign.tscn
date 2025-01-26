@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bmk2jpvuevnnm" path="res://Fonts/PixelifySans-VariableFont_wght.ttf" id="3_75urw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vi21h"]
-size = Vector2(70, 42)
+size = Vector2(136.25, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2p2n"]
 atlas = ExtResource("1_8g6m8")
@@ -56,7 +56,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -5)
+position = Vector2(3.8147e-06, -5)
 scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_vi21h")
 debug_color = Color(0.72529, 0.46985, 0.220965, 0.42)
@@ -65,7 +65,7 @@ debug_color = Color(0.72529, 0.46985, 0.220965, 0.42)
 position = Vector2(0, 3)
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_1csat")
-animation = &"Arrow"
+animation = &"Idle"
 
 [node name="Content" type="Label" parent="."]
 material = SubResource("CanvasItemMaterial_0ff2p")

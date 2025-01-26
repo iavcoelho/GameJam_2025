@@ -4,7 +4,7 @@ class_name Sign
 var interactable: bool = false
 @onready var _animated_sprite = $Area2D/AnimatedSprite2D
 
-@export var sign_content = []
+@export_multiline var sign_content: Array[String] = []
 @export var content_actions = []
 @onready var content_length = len(sign_content)
 @onready var sign_progress = content_length
@@ -80,7 +80,6 @@ func _input(event) -> void:
 			
 			content_tween.tween_property(sign_label, "modulate:a", 0.0, 0.0)
 			_update_label(sign_label, func(input): return sign_content[sign_progress].format({"input": input}), content_actions[sign_progress])
-			sign_label.text = sign_content[sign_progress]
 			content_tween.tween_property(sign_label, "modulate:a", 1.0, 1.0)
 			return
 			
