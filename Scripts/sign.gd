@@ -55,7 +55,6 @@ func _input(event) -> void:
 			return
 		sign_progress = (sign_progress + 1) % (content_length + 1)
 		content_tween = create_tween()
-		print (sign_progress)
 		
 		var fade_out: PropertyTweener
 		
@@ -68,7 +67,7 @@ func _input(event) -> void:
 			
 			fade_out = content_tween.tween_property(sign_label, "modulate:a", 0.0, 1.0)
 			content_tween.tween_property(sign_label, "modulate:a", 1.0, 1.0)
-			fade_out.connect("finished", func(): _update_label(sign_label, func(input): return "", "shooot"))
+			fade_out.connect("finished", func(): _update_label(sign_label, func(input): return "", ""))
 			return
 			
 		
