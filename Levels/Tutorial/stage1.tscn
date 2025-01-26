@@ -24,7 +24,7 @@ position = Vector2(-761, 177)
 z_index = 0
 position = Vector2(-612, 262)
 sign_content = Array[String](["Welcome to the
-Shadow Cave", "The world works a bit different here so lets put you up to speeed", "Press '{input}' to jump!
+Shadow Cave", "The world works a bit different here so lets put you up to speed", "Press '{input}' to jump!
 Hold it to jump higher"])
 content_actions = ["", "", "jump"]
 

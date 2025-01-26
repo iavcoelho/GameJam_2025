@@ -2,11 +2,11 @@
 
 [ext_resource type="TileSet" uid="uid://cagrtvvwsuc5j" path="res://tileset.tres" id="1_rctlc"]
 [ext_resource type="PackedScene" uid="uid://ciuel7s0x42qd" path="res://Player.tscn" id="3_8qhjh"]
-[ext_resource type="PackedScene" uid="uid://qlvkdyc6c1v5" path="res://Fan.tscn" id="4_t3ije"]
+[ext_resource type="PackedScene" uid="uid://cm5btw1ti1enx" path="res://Fan.tscn" id="4_t3ije"]
 [ext_resource type="PackedScene" uid="uid://dpdm08oeh2n2v" path="res://Sign.tscn" id="5_plg4o"]
 [ext_resource type="PackedScene" uid="uid://pe74kw2e3kin" path="res://Background.tscn" id="5_xwk2d"]
 [ext_resource type="PackedScene" uid="uid://r5ohqdhnfep7" path="res://LevelEnd.tscn" id="6_wlknh"]
-[ext_resource type="PackedScene" path="res://Portal.tscn" id="8_5pukd"]
+[ext_resource type="PackedScene" uid="uid://ccflm71h5ja0" path="res://Portal.tscn" id="8_5pukd"]
 
 [node name="stage4" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [221.0, 447.0, 64.0, -163.0]
@@ -30,7 +30,7 @@ scale = Vector2(2.04, 0.879999)
 [node name="Sign3" parent="." instance=ExtResource("5_plg4o")]
 position = Vector2(-484, -61)
 sign_content = Array[String](["Up we gooooo!
-Some areas have fans that push your bubbles up"])
+Some areas have fans that push your bubbles up."])
 content_actions = [""]
 
 [node name="Sign" parent="." instance=ExtResource("5_plg4o")]
