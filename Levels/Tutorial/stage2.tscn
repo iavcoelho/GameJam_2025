@@ -28,7 +28,7 @@ next_scene = ExtResource("4_fufer")
 
 [node name="Sign" parent="." instance=ExtResource("5_jfxn4")]
 position = Vector2(-659, 163)
-sign_content = Array[String](["Well done!", "U can throw bubbles using '{input}'", "Use them to reach places u can't on your own.
+sign_content = Array[String](["Well done!", "U can throw bubbles using '{input}'", "Use them to reach places you can't on your own.
 Try Jumping on top of them"])
 content_actions = ["", "shoot", ""]
 

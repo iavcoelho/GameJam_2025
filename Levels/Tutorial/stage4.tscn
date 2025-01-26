@@ -33,7 +33,7 @@ texture = ExtResource("2_iov02")
 stretch_mode = 6
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_8qhjh")]
-position = Vector2(318, -221)
+position = Vector2(-832, -7)
 
 [node name="Fan" parent="." instance=ExtResource("4_t3ije")]
 position = Vector2(-288, -49)
@@ -42,13 +42,13 @@ scale = Vector2(2.04, 0.879999)
 [node name="Sign3" parent="." instance=ExtResource("5_plg4o")]
 position = Vector2(-484, -61)
 sign_content = Array[String](["Up we gooooo!
-Some areas have fans that push ur bubbles up"])
+Some areas have fans that push your bubbles up"])
 content_actions = [""]
 
 [node name="Sign" parent="." instance=ExtResource("5_plg4o")]
 position = Vector2(478, -157)
 sign_content = Array[String](["If you ever feel stuck
-use '{input}' to ty again"])
+use '{input}' to try again"])
 content_actions = ["reset"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
